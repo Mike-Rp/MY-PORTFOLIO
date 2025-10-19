@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICEA Ecommerce App - UI Designs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .dark body {
+            background: #000000 !important;
+        }
+
+        .dark .bg-white {
+            background: #1a1a1a !important;
+            border-color: #2a2a2a !important;
+        }
+
+        .dark .text-gray-900 {
+            color: #ffffff !important;
+        }
+
+        .dark .text-gray-700 {
+            color: #d1d5db !important;
+        }
+
+        .dark .text-gray-600 {
+            color: #9ca3af !important;
+        }
+
+        .dark .bg-gray-50 {
+            background: #1f1f1f !important;
+        }
+
+        .dark .border-gray-200 {
+            border-color: #2a2a2a !important;
+        }
+
+        .dark .hover\:bg-gray-100:hover {
+            background: #2a2a2a !important;
+        }
+
+        .dark svg {
+            stroke: #ffffff !important;
+        }
+
+        .dark a.back-link {
+            background: #2a2a2a !important;
+            color: #ffffff !important;
+        }
+
+        .dark a.back-link:hover {
+            background: #3a3a3a !important;
+        }
+
+        .image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .image-container:hover {
+            transform: scale(1.02);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .aspect-portrait {
+            aspect-ratio: 1356 / 1270;
+        }
+
+        .aspect-banner {
+            aspect-ratio: 1356 / 376;
+        }
+
+        .aspect-feature {
+            aspect-ratio: 933 / 694;
+        }
+
+        .aspect-vertical {
+            aspect-ratio: 397 / 694;
+        }
+
+        .aspect-footer {
+            aspect-ratio: 1356 / 837;
+        }
+
+        .aspect-card {
+            aspect-ratio: 360 / 640;
+        }
+
+        .aspect-card-alt {
+            aspect-ratio: 360 / 640;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-50 transition-colors duration-300">
+    
+    <div class="max-w-6xl mx-auto px-4 py-8">
+        
+        
+        <div class="bg-white rounded-lg border border-gray-200 p-6 mb-6 transition-colors duration-300">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900 mb-2">ICEA Ecommerce App - UI Design</h1>
+                    <p class="text-gray-600">Complete UI Design showcase for a modern ecommerce application</p>
+                </div>
+                <a href="index.html" class="back-link inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 rounded-lg hover:bg-gray-200 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m12 19-7-7 7-7"></path>
+                        <path d="M19 12H5"></path>
+                    </svg>
+                    Back to Home
+                </a>
+            </div>
+        </div>
+
+       
+        <div class="bg-white rounded-lg border border-gray-200 p-6 mb-6 transition-colors duration-300">
+            
+            
+            <div class="grid grid-cols-1 gap-4">
+                
+                <div class="image-container aspect-portrait border border-gray-200">
+                    <img src="PICTURES/Rectangle 51.png" alt="Main Screen 1">
+              <!--  </div>
+                <div class="image-container aspect-portrait border border-gray-200">
+                    <img src="PICTURES/ecom2.png" alt="Main Screen 2">
+                </div>
+                <div class="image-container aspect-portrait border border-gray-200">
+                    <img src="PICTURES/ecom3.png" alt="Main Screen 3">
+                </div> -->
+            </div>
+        </div>
+
+       
+        <div class="bg-white rounded-lg border border-gray-200 p-6 mb-6 transition-colors duration-300">
+           
+            
+            <div class="grid grid-cols-1 gap-4">
+               
+                <div class="image-container aspect-banner border border-gray-200">
+                    <img src="PICTURES/Frame 67.png" alt="Banner 1">
+                </div>
+                <div class="image-container aspect-banner border border-gray-200">
+                    <img src="PICTURES/Frame 68.png" alt="Banner 2">
+                </div>
+            </div>
+        </div>
+
+      
+        <div class="bg-white rounded-lg border border-gray-200 p-6 mb-6 transition-colors duration-300">
+            
+            
+            <div class="flex gap-4">
+                
+                <div class="image-container aspect-feature border border-gray-200 flex-shrink-0" style="width: 70%;">
+                    <img src="PICTURES/prototype.png" alt="Feature 1">
+                </div>
+                <div class="image-container aspect-vertical border border-gray-200 flex-shrink-0" style="width: 30%;">
+                    <img src="PICTURES/Frame 69.png" alt="Feature 2">
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="bg-white rounded-lg border border-gray-200 p-6 mb-6 transition-colors duration-300">
+            
+            
+            <div class="grid grid-cols-1 gap-4">
+               
+                <div class="image-container aspect-portrait border border-gray-200">
+                    <img src="PICTURES/gr49.png" alt="Additional Screen 1">
+                </div>
+                
+               
+                <div class="image-container aspect-footer border border-gray-200">
+                    <img src="PICTURES/Frame 70.png" alt="Footer Section">
+                </div>
+                
+              
+                <div class="image-container aspect-portrait border border-gray-200">
+                    <img src="PICTURES/gr50.png" alt="Additional Screen 2">
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="bg-white rounded-lg border border-gray-200 p-6 mb-6 transition-colors duration-300">
+            
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                
+           <div class="image-container aspect-card border border-gray-200">
+    <video 
+        class="w-full h-full object-cover" 
+        autoplay 
+        muted 
+        loop 
+        playsinline>
+        <source src="PICTURES/vid123.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+                
+                <div class="relative aspect-card-alt border border-gray-200 rounded-lg overflow-hidden">
+                    <div id="carousel" class="w-full h-full">
+                        <img src="PICTURES/ICEA HOME PAGE.png" alt="Product 1" class="carousel-image w-full h-full object-cover">
+                        <img src="PICTURES/ICEA POPULAR.png" alt="Product 2" class="carousel-image w-full h-full object-cover hidden">
+                        <img src="PICTURES/ICEA ADD TO CART.png" alt="Product 3" class="carousel-image w-full h-full object-cover hidden">
+                        <img src="PICTURES/ICEA NOTIF.png" alt="Product 4" class="carousel-image w-full h-full object-cover hidden">
+                        <img src="PICTURES/ICEA PROFILE.png" alt="Product 5" class="carousel-image w-full h-full object-cover hidden">
+                    </div>
+                    
+                   
+                    <button id="prevBtn" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m15 18-6-6 6-6"></path>
+                        </svg>
+                    </button>
+                    <button id="nextBtn" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m9 18 6-6-6-6"></path>
+                        </svg>
+                    </button>
+                    
+                   
+                    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                        <button class="carousel-dot w-2 h-2 rounded-full bg-white transition-all" data-index="0"></button>
+                        <button class="carousel-dot w-2 h-2 rounded-full bg-white/50 transition-all" data-index="1"></button>
+                        <button class="carousel-dot w-2 h-2 rounded-full bg-white/50 transition-all" data-index="2"></button>
+                        <button class="carousel-dot w-2 h-2 rounded-full bg-white/50 transition-all" data-index="3"></button>
+                        <button class="carousel-dot w-2 h-2 rounded-full bg-white/50 transition-all" data-index="4"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        
+        const html = document.documentElement;
+        
+        if (localStorage.getItem('darkMode') === 'true') {
+            html.classList.add('dark');
+        }
+
+       
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.carousel-image');
+        const dots = document.querySelectorAll('.carousel-dot');
+        const totalImages = images.length;
+
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.toggle('hidden', i !== index);
+            });
+            
+            dots.forEach((dot, i) => {
+                if (i === index) {
+                    dot.classList.remove('bg-white/50');
+                    dot.classList.add('bg-white');
+                } else {
+                    dot.classList.remove('bg-white');
+                    dot.classList.add('bg-white/50');
+                }
+            });
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % totalImages;
+            showImage(currentIndex);
+        });
+
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+            showImage(currentIndex);
+        });
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentIndex = index;
+                showImage(currentIndex);
+            });
+        });
+
+       
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % totalImages;
+            showImage(currentIndex);
+        }, 4000);
+    </script>
+</body>
+</html>
