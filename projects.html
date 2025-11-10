@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Featured Projects - MyPortfolio</title>
-    
+
     <style>
         html.dark {
             background: #000000;
         }
+
         html.dark body {
             background: #000000;
         }
     </style>
-    
+
     <script>
-        (function() {
+        (function () {
             if (localStorage.getItem('darkMode') === 'true') {
                 document.documentElement.classList.add('dark');
             }
         })();
     </script>
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .dark body {
@@ -70,7 +72,7 @@
         }
 
         .dark .hover\:bg-blue-100:hover {
-            background: #498bf554!important;
+            background: #498bf554 !important;
         }
 
         .dark .hover\:border-blue-300:hover {
@@ -114,18 +116,21 @@
         }
     </style>
 </head>
+
 <body class="min-h-screen bg-gray-50">
-    
+
     <div class="max-w-6xl mx-auto px-4 py-8">
-        
+
         <div class="bg-white rounded-lg border border-gray-200 p-4 md:p-6 mb-6">
             <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                 <div class="flex-1">
                     <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Featured Projects</h1>
-                    
+
                 </div>
-                <a href="index.html" class="inline-flex items-center justify-center gap-2 px-4 py-2 bg-black text-white font-semibold text-sm rounded-lg hover:opacity-90 whitespace-nowrap">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <a href="index.html"
+                    class="inline-flex items-center justify-center gap-2 px-4 py-2 bg-black text-white font-semibold text-sm rounded-lg hover:opacity-90 whitespace-nowrap">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="m12 19-7-7 7-7"></path>
                         <path d="M19 12H5"></path>
                     </svg>
@@ -134,45 +139,98 @@
             </div>
         </div>
 
-       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-            
-    <div class="bg-white rounded-lg border border-gray-200 p-6 hover:border-blue-300 transition-all duration-300 flex flex-col h-full">
-        <h3 class="text-lg font-semibold text-gray-900 mb-2">Computer Society</h3>
-        <p class="text-sm text-gray-600 mb-4 flex-1">Social Media Designs</p>
-        <a href="viewproj1.html" class="block px-4 py-2 bg-black text-white font-bold text-sm rounded-lg hover:opacity-90 transition-opacity text-center mt-auto">View project</a>
-    </div>
-    
-    <div class="bg-white rounded-lg border border-gray-200 p-6 hover:border-blue-300 transition-all duration-300 flex flex-col h-full">
-        <h3 class="text-lg font-semibold text-gray-900 mb-2">CasinoDrop</h3>
-        <p class="text-sm text-gray-600 mb-4 flex-1">Affiliate Landing Page</p>
-        <a href="viewprojweb1.html" class="block px-4 py-2 bg-black text-white font-bold text-sm rounded-lg hover:opacity-90 transition-opacity text-center mt-auto">View project</a>
-    </div>
-    
-    <div class="bg-white rounded-lg border border-gray-200 p-6 hover:border-blue-300 transition-all duration-300 flex flex-col h-full">
-        <h3 class="text-lg font-semibold text-gray-900 mb-2">ICEA Ecommerce App</h3>
-        <p class="text-sm text-gray-600 mb-4 flex-1">UI Design</p>
-        <a href="viewproj2.html" class="block px-4 py-2 bg-black text-white font-bold text-sm rounded-lg hover:opacity-90 transition-opacity text-center mt-auto">View project</a>
-    </div>
-    
-    <div class="bg-white rounded-lg border border-gray-200 p-6 hover:border-blue-300 transition-all duration-300 flex flex-col h-full">
-        <h3 class="text-lg font-semibold text-gray-900 mb-2">Bloom Haven Ecommerce App</h3>
-        <p class="text-sm text-gray-600 mb-4 flex-1">UI Design</p>
-        <a href="viewproj3.html" class="block px-4 py-2 bg-black text-white font-bold text-sm rounded-lg hover:opacity-90 transition-opacity text-center mt-auto">View project</a>
-    </div>
-    
-    <div class="bg-white rounded-lg border border-gray-200 p-6 hover:border-blue-300 transition-all duration-300 flex flex-col h-full">
-        <h3 class="text-lg font-semibold text-gray-900 mb-2">OCAA - One Call Away Appointment Web-Based System</h3>
-        <p class="text-sm text-gray-600 mb-4 flex-1">Full-Stack Developer & UI/UX Designer</p>
-        <a href="viewproj2web.html" class="block px-4 py-2 bg-black text-white font-bold text-sm rounded-lg hover:opacity-90 transition-opacity text-center mt-auto">View project</a>
-    </div>
-    
-    <div class="bg-white rounded-lg border border-gray-200 p-6 hover:border-blue-300 transition-all duration-300 flex flex-col h-full">
-        <h3 class="text-lg font-semibold text-gray-900 mb-2">BUDGET TRACKER</h3>
-        <p class="text-sm text-gray-600 mb-4 flex-1">Full-Stack Developer & UI/UX Designer</p>
-        <a href="viewprojweb3.html" class="block px-4 py-2 bg-black text-white font-bold text-sm rounded-lg hover:opacity-90 transition-opacity text-center mt-auto">View project</a>
-    </div>
-    
-</div>
-    </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+
+            <div
+                class="bg-white rounded-lg border border-gray-200 p-6 hover:border-blue-300 transition-all duration-300 flex flex-col h-full">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Computer Society</h3>
+                <p class="text-sm text-gray-600 mb-4 flex-1">Social Media Designs</p>
+                <a href="viewproj1.html"
+                    class="block px-4 py-2 bg-black text-white font-bold text-sm rounded-lg hover:opacity-90 transition-opacity text-center mt-auto">View
+                    project</a>
+            </div>
+
+            <div
+                class="bg-white rounded-lg border border-gray-200 p-6 hover:border-blue-300 transition-all duration-300 flex flex-col h-full">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">CasinoDrop</h3>
+                <p class="text-sm text-gray-600 mb-4 flex-1">Affiliate Landing Page</p>
+                <a href="viewprojweb1.html"
+                    class="block px-4 py-2 bg-black text-white font-bold text-sm rounded-lg hover:opacity-90 transition-opacity text-center mt-auto">View
+                    project</a>
+            </div>
+
+            <div
+                class="bg-white rounded-lg border border-gray-200 p-6 hover:border-blue-300 transition-all duration-300 flex flex-col h-full">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">ICEA Ecommerce App</h3>
+                <p class="text-sm text-gray-600 mb-4 flex-1">UI Design</p>
+                <a href="viewproj2.html"
+                    class="block px-4 py-2 bg-black text-white font-bold text-sm rounded-lg hover:opacity-90 transition-opacity text-center mt-auto">View
+                    project</a>
+            </div>
+
+            <div
+                class="bg-white rounded-lg border border-gray-200 p-6 hover:border-blue-300 transition-all duration-300 flex flex-col h-full">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Bloom Haven Ecommerce App</h3>
+                <p class="text-sm text-gray-600 mb-4 flex-1">UI Design</p>
+                <a href="viewproj3.html"
+                    class="block px-4 py-2 bg-black text-white font-bold text-sm rounded-lg hover:opacity-90 transition-opacity text-center mt-auto">View
+                    project</a>
+            </div>
+
+            <div
+                class="bg-white rounded-lg border border-gray-200 p-6 hover:border-blue-300 transition-all duration-300 flex flex-col h-full">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">OCAA - One Call Away Appointment Web-Based System
+                </h3>
+                <p class="text-sm text-gray-600 mb-4 flex-1">Full-Stack Developer & UI/UX Designer</p>
+                <a href="viewproj2web.html"
+                    class="block px-4 py-2 bg-black text-white font-bold text-sm rounded-lg hover:opacity-90 transition-opacity text-center mt-auto">View
+                    project</a>
+            </div>
+
+            <div
+                class="bg-white rounded-lg border border-gray-200 p-6 hover:border-blue-300 transition-all duration-300 flex flex-col h-full">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">BUDGET TRACKER</h3>
+                <p class="text-sm text-gray-600 mb-4 flex-1">Full-Stack Developer & UI/UX Designer</p>
+                <a href="viewprojweb3.html"
+                    class="block px-4 py-2 bg-black text-white font-bold text-sm rounded-lg hover:opacity-90 transition-opacity text-center mt-auto">View
+                    project</a>
+            </div>
+            <div
+                class="bg-white rounded-lg border border-gray-200 p-6 hover:border-blue-300 transition-all duration-300 flex flex-col h-full">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Find A Cafe</h3>
+                <p class="text-sm text-gray-600 mb-4 flex-1">Full-Stack Developer & UI/UX Designer</p>
+                <a href="viewprojweb4.html"
+                    class="block px-4 py-2 bg-black text-white font-bold text-sm rounded-lg hover:opacity-90 transition-opacity text-center mt-auto">View
+                    project</a>
+            </div>
+            <div
+                class="bg-white rounded-lg border border-gray-200 p-6 hover:border-blue-300 transition-all duration-300 flex flex-col h-full">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Tech Service Ph</h3>
+                <p class="text-sm text-gray-600 mb-4 flex-1">Full-Stack Developer & UI/UX Designer</p>
+                <a href="viewprojweb5.html"
+                    class="block px-4 py-2 bg-black text-white font-bold text-sm rounded-lg hover:opacity-90 transition-opacity text-center mt-auto">View
+                    project</a>
+
+            </div>
+            <div
+                class="bg-white rounded-lg border border-gray-200 p-6 hover:border-blue-300 transition-all duration-300 flex flex-col h-full">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">GRAPHIC-TASK</h3>
+                <p class="text-sm text-gray-600 mb-4 flex-1">Full-Stack Developer & UI/UX Designer</p>
+                <a href="viewprojweb6.html"
+                    class="block px-4 py-2 bg-black text-white font-bold text-sm rounded-lg hover:opacity-90 transition-opacity text-center mt-auto">View
+                    project</a>
+            </div>
+            <div
+                class="bg-white rounded-lg border border-gray-200 p-6 hover:border-blue-300 transition-all duration-300 flex flex-col h-full">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Calculator Troll</h3>
+                <p class="text-sm text-gray-600 mb-4 flex-1">Full-Stack Developer & UI/UX Designer</p>
+                <a href="viewproj7.html"
+                    class="block px-4 py-2 bg-black text-white font-bold text-sm rounded-lg hover:opacity-90 transition-opacity text-center mt-auto">View
+                    project</a>
+            </div>
+
+
+        </div>
 </body>
+
 </html>

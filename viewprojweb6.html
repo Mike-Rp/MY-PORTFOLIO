@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphic Task</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .dark body {
+            background: #000000 !important;
+        }
+
+        .dark .bg-white {
+            background: #1a1a1a !important;
+            border-color: #2a2a2a !important;
+        }
+
+        .dark .text-gray-900 {
+            color: #ffffff !important;
+        }
+
+        .dark .text-gray-700 {
+            color: #d1d5db !important;
+        }
+
+        .dark .text-gray-600 {
+            color: #9ca3af !important;
+        }
+
+        .dark .bg-gray-50 {
+            background: #1f1f1f !important;
+        }
+
+        .dark .bg-gray-100 {
+            background: #2a2a2a !important;
+        }
+
+        .dark .border-gray-200 {
+            border-color: #2a2a2a !important;
+        }
+
+        .dark .hover\:bg-gray-100:hover {
+            background: #2a2a2a !important;
+        }
+
+        .dark svg {
+            stroke: #ffffff !important;
+        }
+
+        .dark a.back-link {
+            background: #2a2a2a !important;
+            color: #ffffff !important;
+        }
+
+        .dark a.back-link:hover {
+            background: #3a3a3a !important;
+        }
+
+        .dark a.home-button {
+            background: #ffffff !important;
+            color: #000000 !important;
+        }
+
+        .dark a.home-button svg {
+            stroke: #000000 !important;
+        }
+
+        .device-frame {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            background: #f9fafb;
+            border: 2px solid #e5e7eb;
+            transition: all 0.3s ease;
+            margin: 0 auto;
+        }
+
+        .dark .device-frame {
+            background: #1f1f1f;
+            border-color: #2a2a2a;
+        }
+
+        .device-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        .desktop-view {
+            width: 100%;
+            height: 600px;
+        }
+
+        .tablet-view {
+            width: 768px;
+            height: 600px;
+            max-width: 100%;
+        }
+
+        .mobile-view {
+            width: 375px;
+            height: 667px;
+            max-width: 100%;
+        }
+
+        .tech-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background: #f3f4f6;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            font-size: 0.875rem;
+            color: #374151;
+        }
+
+        .dark .tech-badge {
+            background: #2a2a2a;
+            color: #d1d5db;
+        }
+
+        .view-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #e5e7eb;
+            background: white;
+            color: #374151;
+        }
+
+        .view-button:hover {
+            background: #f3f4f6;
+        }
+
+        .view-button.active {
+            background: #000000;
+            color: white;
+            border-color: #000000;
+        }
+
+        .dark .view-button {
+            background: #2a2a2a;
+            color: #d1d5db;
+            border-color: #3a3a3a;
+        }
+
+        .dark .view-button:hover {
+            background: #3a3a3a;
+        }
+
+        .dark .view-button.active {
+            background: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+        }
+
+        .dark .view-button.active svg {
+            stroke: #000000 !important;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-50 transition-colors duration-300">
+    
+    <div class="max-w-6xl mx-auto px-4 py-8">
+        
+        
+        <div class="bg-white rounded-lg border border-gray-200 p-6 mb-6 transition-colors duration-300">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900 mb-2">Graphic Task
+                        <br> Web-Based System <br>
+                    </h1>
+                    
+                    <p class="text-gray-600">Full-Stack Developer & UI/UX Designer</p>
+                </div>
+                <div class="flex gap-2">
+                    <a href="projects.html" class="back-link inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 rounded-lg hover:bg-gray-200 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m12 19-7-7 7-7"></path>
+                            <path d="M19 12H5"></path>
+                        </svg>
+                        Back to Projects
+                    </a>
+                    <a href="index.html" class="home-button inline-flex items-center justify-center gap-2 px-4 py-2 bg-black text-white font-semibold text-sm rounded-lg hover:opacity-90 transition-opacity">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                        Home
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="bg-white rounded-lg border border-gray-200 p-6 mb-6 transition-colors duration-300">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">About This Project</h2>
+            <div class="space-y-4 text-gray-700">
+                <p>
+                    The Graphic Task is a web-based system designed to streamline the management and organization of graphic design projects. It allows users to create, track, and collaborate on various design tasks, ensuring efficient workflow and communication among team members. The system features task assignment, progress tracking, file sharing, and deadline management, making it an essential tool for graphic design teams looking to enhance productivity and project oversight.
+                
+            </div>
+        </div>
+
+       
+        <div class="bg-white rounded-lg border border-gray-200 p-6 mb-6 transition-colors duration-300">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Technologies Used</h2>
+            <div class="flex flex-wrap gap-3">
+                <span class="tech-badge">HTML5</span>
+                <span class="tech-badge">CSS</span>
+                <span class="tech-badge">JavaScript</span>
+                <span class="tech-badge">FIGMA</span>
+            </div>
+        </div>
+
+        
+        <div class="bg-white rounded-lg border border-gray-200 p-6 mb-6 transition-colors duration-300">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Responsive Design Showcase</h2>
+            
+            
+            <div class="flex flex-wrap justify-center gap-3 mb-6">
+                <button id="desktopBtn" class="view-button active" onclick="changeView('desktop')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="20" height="14" x="2" y="3" rx="2"></rect>
+                        <line x1="8" x2="16" y1="21" y2="21"></line>
+                        <line x1="12" x2="12" y1="17" y2="21"></line>
+                    </svg>
+                    Desktop View
+                </button>
+                <button id="tabletBtn" class="view-button" onclick="changeView('tablet')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="16" height="20" x="4" y="2" rx="2" ry="2"></rect>
+                        <line x1="12" x2="12.01" y1="18" y2="18"></line>
+                    </svg>
+                    Tablet View
+                </button>
+                <button id="mobileBtn" class="view-button" onclick="changeView('mobile')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect>
+                        <line x1="12" x2="12.01" y1="18" y2="18"></line>
+                    </svg>
+                    Mobile View
+                </button>
+            </div>
+
+           
+            <div class="flex justify-center">
+                <div id="deviceFrame" class="device-frame desktop-view">
+                    <iframe src="https://mike-rp.github.io/GRAPHIC-TASK/" title="Website Preview"></iframe>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="bg-white rounded-lg border border-gray-200 p-6 transition-colors duration-300">
+            <div class="text-center">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Experience the Live Website</h2>
+                <p class="text-gray-600 mb-6">Click below to open the full project in a new tab.</p>
+                <a href="https://mike-rp.github.io/GRAPHIC-TASK/" target="_blank" 
+                   class="inline-flex items-center gap-2 px-6 py-3 bg-black text-white font-bold text-lg rounded-lg hover:opacity-90 transition-opacity">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" x2="21" y1="14" y2="3"></line>
+                    </svg>
+                    Check it out
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        
+        const html = document.documentElement;
+        
+        if (localStorage.getItem('darkMode') === 'true') {
+            html.classList.add('dark');
+        }
+
+        
+        function changeView(view) {
+            const deviceFrame = document.getElementById('deviceFrame');
+            const desktopBtn = document.getElementById('desktopBtn');
+            const tabletBtn = document.getElementById('tabletBtn');
+            const mobileBtn = document.getElementById('mobileBtn');
+
+            
+            deviceFrame.classList.remove('desktop-view', 'tablet-view', 'mobile-view');
+            
+            
+            desktopBtn.classList.remove('active');
+            tabletBtn.classList.remove('active');
+            mobileBtn.classList.remove('active');
+
+            
+            if (view === 'desktop') {
+                deviceFrame.classList.add('desktop-view');
+                desktopBtn.classList.add('active');
+            } else if (view === 'tablet') {
+                deviceFrame.classList.add('tablet-view');
+                tabletBtn.classList.add('active');
+            } else if (view === 'mobile') {
+                deviceFrame.classList.add('mobile-view');
+                mobileBtn.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
