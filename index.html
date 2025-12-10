@@ -142,6 +142,33 @@
         .dark a.border-black svg {
             stroke: #ffffff !important;
         }
+        .dark #profileImg1,
+        .dark #profileImg1Hover {
+            display: none;
+        }
+
+        .dark #profileImg2,
+        .dark #profileImg2Hover {
+            display: block;
+        }
+
+        /* Hover effects for profile images */
+        #profileContainer:hover #profileImg1 {
+            opacity: 0;
+        }
+
+        #profileContainer:hover #profileImg1Hover {
+            opacity: 1;
+        }
+
+        .dark #profileContainer:hover #profileImg2 {
+            opacity: 0;
+        }
+
+        .dark #profileContainer:hover #profileImg2Hover {
+            opacity: 1;
+        }
+
     </style>
 </head>
 
@@ -180,12 +207,19 @@
             </div>
             <div class="flex flex-col md:flex-row gap-6">
 
-                <div id="profileContainer" class="relative w-32 h-32 flex-shrink-0 mx-auto md:mx-0">
-                    <img id="profileImg1" src="PICTURES/profile1.jpg" alt="Profile"
-                        class="w-full h-full rounded-lg object-cover">
-                    <img id="profileImg2" src="PICTURES/profile1.jpg" alt="Profile Dark"
-                        class="hidden w-full h-full rounded-lg object-cover">
-                </div>
+               <div id="profileContainer" class="relative w-32 h-32 flex-shrink-0 mx-auto md:mx-0">
+    
+    <img id="profileImg1" src="PICTURES/profile1.png" alt="Profile"
+        class="profile-img w-full h-full rounded-lg object-cover absolute top-0 left-0 transition-opacity duration-300">
+    <img id="profileImg1Hover" src="PICTURES/profile1-1.png" alt="Profile Hover"
+        class="profile-img w-full h-full rounded-lg object-cover absolute top-0 left-0 opacity-0 transition-opacity duration-300">
+    
+    
+    <img id="profileImg2" src="PICTURES/profile2.png" alt="Profile Dark"
+        class="profile-img w-full h-full rounded-lg object-cover absolute top-0 left-0 hidden transition-opacity duration-300">
+    <img id="profileImg2Hover" src="PICTURES/profile2-2.png" alt="Profile Dark Hover"
+        class="profile-img w-full h-full rounded-lg object-cover absolute top-0 left-0 opacity-0 hidden transition-opacity duration-300">
+</div>
 
 
                 <div class="flex-1 text-center md:text-left">
@@ -229,13 +263,13 @@
                             </svg>
                             Schedule a Meeting
                         </a>
-                        <!-- <a href="https://github.com/Mike-Rp" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+                         <a href="https://github.com/Mike-Rp" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                             </svg>
                             <span class="text-sm font-semibold text-gray-700 social-link-text">GitHub</span>
                        </a>
-                       -->
+                       
 
 
                     </div>
@@ -314,6 +348,10 @@
                                     Design</span>
                                 <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">Print Design</span>
                                 <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">UI Designer</span>
+                                <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">Front End
+                                    Developer</span>
+                                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">Full Stack Developer</span>
+                                     <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">Developer</span>
                             </div>
                         </div>
 
@@ -323,8 +361,6 @@
                                 <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">Video Editor</span>
                                 <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">Motion
                                     Graphics</span>
-                                <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">Front End
-                                    Developer</span>
                                 <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">Programmer</span>
                             </div>
                         </div>
