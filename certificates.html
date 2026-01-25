@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certifications - MyPortfolio</title>
+
+    <style>
+        html.dark {
+            background: #000000;
+        }
+
+        html.dark body {
+            background: #000000;
+        }
+    </style>
+
+    <script>
+        (function () {
+            if (localStorage.getItem('darkMode') === 'true') {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .dark body {
+            background: #000000 !important;
+        }
+
+        .dark .bg-white {
+            background: #1a1a1a !important;
+            border-color: #2a2a2a !important;
+        }
+
+        .dark .text-gray-900 {
+            color: #ffffff !important;
+        }
+
+        .dark .text-gray-700 {
+            color: #d1d5db !important;
+        }
+
+        .dark .text-gray-600 {
+            color: #9ca3af !important;
+        }
+
+        .dark .text-gray-500 {
+            color: #6b7280 !important;
+        }
+
+        .dark .bg-gray-100 {
+            background: #2a2a2a !important;
+        }
+
+        .dark .bg-gray-50 {
+            background: #1f1f1f !important;
+        }
+
+        .dark .border-gray-200 {
+            border-color: #2a2a2a !important;
+        }
+
+        .dark .hover\:bg-gray-200:hover {
+            background: #3a3a3a !important;
+        }
+
+        .dark .hover\:bg-blue-100:hover {
+            background: #498bf554 !important;
+        }
+
+        .dark .hover\:border-blue-300:hover {
+            border-color: #3b82f6 !important;
+        }
+
+        .dark svg {
+            stroke: #ffffff !important;
+        }
+
+        .dark a.bg-black {
+            background: #ffffff !important;
+            color: #000000 !important;
+        }
+
+        .dark a.bg-black svg {
+            stroke: #000000 !important;
+        }
+
+        .cert-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background: #f3f4f6;
+        }
+
+        .dark .cert-card {
+            background: #2a2a2a;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .dark .cert-card:hover {
+            box-shadow: 0 12px 24px rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-gray-50 transition-colors duration-300">
+
+    <div class="max-w-6xl mx-auto px-4 py-8">
+
+        <div class="bg-white rounded-lg border border-gray-200 p-4 md:p-6 mb-6 transition-colors duration-300">
+            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                <div class="flex-1">
+                    <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">All Certifications</h1>
+                </div>
+                <a href="index.html"
+                    class="inline-flex items-center justify-center gap-2 px-4 py-2 bg-black text-white font-semibold text-sm rounded-lg hover:opacity-90 whitespace-nowrap transition-opacity">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m12 19-7-7 7-7"></path>
+                        <path d="M19 12H5"></path>
+                    </svg>
+                    Back to Home
+                </a>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+            <a href="https://drive.google.com/file/d/1ZUhIi6TzRs-Wmsr0W8cApMK_wuj9PYN0/view?usp=sharing"
+                target="_blank"
+                class="cert-card rounded-lg border border-gray-200 p-8 transition-colors duration-300 hover:border-blue-300">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Adobe Premiere Pro Master Class</h3>
+                <p class="text-sm text-gray-600">Graphics Media Training Philippines</p>
+            </a>
+
+            <a href="https://drive.google.com/file/d/1bvFbskR7HOmva3NqI1OR9ot46u-3F4-I/view?usp=sharing"
+                target="_blank"
+                class="cert-card rounded-lg border border-gray-200 p-8 transition-colors duration-300 hover:border-blue-300">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Graphic Design Course</h3>
+                <p class="text-sm text-gray-600">Phixels Creative Academy Philippines</p>
+            </a>
+
+            <a href="https://drive.google.com/file/d/1Wcrt16Ogmn8lBBC4uSdlW1RA06eDpC2E/view?usp=sharing"
+                target="_blank"
+                class="cert-card rounded-lg border border-gray-200 p-8 transition-colors duration-300 hover:border-blue-300">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Photoshop Class Course</h3>
+                <p class="text-sm text-gray-600">Phixels Creative Academy Philippines</p>
+            </a>
+
+            <a href="https://drive.google.com/file/d/1tg4wyEOTySdddLYwFJQpN9MVdtDE1EtE/view?usp=sharing"
+                target="_blank"
+                class="cert-card rounded-lg border border-gray-200 p-8 transition-colors duration-300 hover:border-blue-300">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">IGNITE HACKathon 2025</h3>
+                <p class="text-sm text-gray-600">City Youth Development Office</p>
+            </a>
+
+            <a href="https://www.codecred.dev/verify/59db8bb5-4b05-41a2-a82f-1365234bac2b"
+                target="_blank"
+                class="cert-card rounded-lg border border-gray-200 p-8 transition-colors duration-300 hover:border-blue-300">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">HTML Fundamentals</h3>
+                <p class="text-sm text-gray-600">CodeCred</p>
+            </a>
+            <a href="https://www.codecred.dev/verify/4232ebb2-77bd-4ee9-b16f-dbe847af3fc9"
+                target="_blank"
+                class="cert-card rounded-lg border border-gray-200 p-8 transition-colors duration-300 hover:border-blue-300">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Laravel Foundations</h3>
+                <p class="text-sm text-gray-600">CodeCred</p>
+            </a>
+            <a href="https://www.codecred.dev/verify/88e0dda2-8eb4-4f93-a6eb-443b3e3066c8"
+                target="_blank"
+                class="cert-card rounded-lg border border-gray-200 p-8 transition-colors duration-300 hover:border-blue-300">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Cybersecurity Fundamentals</h3>
+                <p class="text-sm text-gray-600">CodeCred</p>
+            </a>
+            <a href="https://www.codecred.dev/verify/225043f1-e22f-49ad-977c-39c099855ba4"
+                target="_blank"
+                class="cert-card rounded-lg border border-gray-200 p-8 transition-colors duration-300 hover:border-blue-300">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">UI/UX Principles</h3>
+                <p class="text-sm text-gray-600">CodeCred</p>
+            </a>
+            <a href="https://www.codecred.dev/verify/fee56904-9b76-438b-b2fc-959cc1a86a05"
+                target="_blank"
+                class="cert-card rounded-lg border border-gray-200 p-8 transition-colors duration-300 hover:border-blue-300">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">CSS Mastery</h3>
+                <p class="text-sm text-gray-600">CodeCred</p>
+            </a>
+
+        </div>
+
+    </div>
+
+    <script>
+        const html = document.documentElement;
+
+        if (localStorage.getItem('darkMode') === 'true') {
+            html.classList.add('dark');
+        }
+    </script>
+
+</body>
+
+</html>
