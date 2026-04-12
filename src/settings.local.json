@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:bryllim.com)",
+      "Bash(grep -l \"rounded-\" D:/MY-PORTFOLIO/viewproj*.html D:/MY-PORTFOLIO/viewprojweb*.html D:/MY-PORTFOLIO/viewprojectsweb*.html)",
+      "Bash(grep -l \"Check it out\\\\|check.*out\\\\|Experience the Live\" D:/MY-PORTFOLIO/viewproj*.html D:/MY-PORTFOLIO/viewprojweb*.html D:/MY-PORTFOLIO/viewprojectsweb*.html)",
+      "Bash(grep -l \"view-button\\\\|flex gap-2\" D:/MY-PORTFOLIO/viewproj*.html D:/MY-PORTFOLIO/viewprojweb*.html D:/MY-PORTFOLIO/viewprojectsweb*.html)"
+    ]
+  }
+}

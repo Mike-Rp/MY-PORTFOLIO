@@ -55,6 +55,10 @@
             background: #2a2a2a !important;
         }
 
+        .dark .hover\:bg-gray-50:hover {
+            background: #2a2a2a !important;
+        }
+
         .dark .hover\:bg-blue-100:hover {
             background: #498bf554 !important;
         }
@@ -80,21 +84,32 @@
             opacity: 1;
         }
 
-        .dark #darkModeToggle {
-            background: #3a3a3a;
+        /* Toggle sides */
+        #toggleSunSide {
+            background: #ffffff;
         }
-
-        .dark #toggleCircle {
-            transform: translateX(28px);
+        #toggleMoonSide {
+            background: #e5e7eb;
+        }
+        .dark #toggleSunSide {
+            background: #374151 !important;
+        }
+        .dark #toggleMoonSide {
             background: #ffffff !important;
         }
 
-        .dark #moonIcon {
-            stroke: #000000;
-        }
-
+        /* Toggle icon colors */
         #sunIcon {
-            stroke: #000000;
+            stroke: #374151;
+        }
+        #moonIcon {
+            stroke: #9ca3af;
+        }
+        .dark #sunIcon {
+            stroke: #6b7280 !important;
+        }
+        .dark #moonIcon {
+            stroke: #374151 !important;
         }
 
         .dark a.bg-black {
@@ -106,13 +121,25 @@
             stroke: #ffffff !important;
         }
 
-        .dark #sunIcon {
-            stroke: #000000 !important;
+        /* Override for toggle icons (higher specificity wins) */
+        #darkModeToggle #sunIcon {
+            stroke: #374151 !important;
+        }
+        #darkModeToggle #moonIcon {
+            stroke: #9ca3af !important;
+        }
+        .dark #darkModeToggle #sunIcon {
+            stroke: #6b7280 !important;
+        }
+        .dark #darkModeToggle #moonIcon {
+            stroke: #374151 !important;
         }
 
-        .dark #moonIcon {
-            stroke: #000000 !important;
-        }
+        /* Experience timeline */
+        .exp-line { background-color: #e5e7eb; }
+        .dark .exp-line { background-color: #374151 !important; }
+        .dark .exp-active { background-color: #ffffff !important; }
+        .dark .exp-inactive { border-color: #6b7280 !important; background-color: #1a1a1a !important; }
 
         .dark #profileImg1 {
             display: none;
@@ -176,74 +203,97 @@
 
 <body class="min-h-screen bg-gray-50 transition-colors duration-300">
 
+    <!-- Resume Preview Modal -->
+    <div id="resumeModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-70">
+        <div class="bg-white w-full max-w-4xl mx-4 flex flex-col" style="height: 90vh;">
+            <div class="flex items-center justify-between px-4 py-3 border-b border-gray-200 flex-shrink-0">
+                <span class="font-bold text-gray-900 text-sm">Resume Preview</span>
+                <div class="flex items-center gap-2">
+                    <button onclick="printResume()"
+                        class="inline-flex items-center gap-2 px-4 py-2 bg-black text-white font-semibold text-sm hover:opacity-90 transition-opacity">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" x2="12" y1="15" y2="3"></line>
+                        </svg>
+                        Download / Print
+                    </button>
+                    <button onclick="closeResumeModal()" class="p-2 hover:bg-gray-100 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 6 6 18"></path>
+                            <path d="m6 6 12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <iframe id="resumeFrame" src="resume.html" class="flex-1 w-full" frameborder="0"></iframe>
+        </div>
+    </div>
+
     <div class="max-w-6xl mx-auto px-4 py-8">
 
 
-        <div class="bg-white rounded-lg border border-gray-200 p-8 mb-6 transition-colors duration-300">
-            <div class="flex justify-between items-start mb-4">
-                <div></div>
-                <button id="darkModeToggle"
-                    class="relative p-2 w-14 h-7 rounded-full bg-gray-200 transition-colors duration-300 focus:outline-none">
-                    <div id="toggleCircle"
-                        class="absolute top-1 left-1 w-5 h-5 bg-white rounded-full transition-transform duration-300 flex items-center justify-center">
-                        <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="4"></circle>
-                            <path d="M12 2v2"></path>
-                            <path d="M12 20v2"></path>
-                            <path d="m4.93 4.93 1.41 1.41"></path>
-                            <path d="m17.66 17.66 1.41 1.41"></path>
-                            <path d="M2 12h2"></path>
-                            <path d="M20 12h2"></path>
-                            <path d="m6.34 17.66-1.41 1.41"></path>
-                            <path d="m19.07 4.93-1.41 1.41"></path>
-                        </svg>
-                        <svg id="moonIcon" class="hidden" xmlns="http://www.w3.org/2000/svg" width="12" height="12"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
-                        </svg>
-                    </div>
-                </button>
-            </div>
-            <div class="flex flex-col md:flex-row gap-6">
+        <div class="bg-white border border-gray-200 p-8 mb-6 transition-colors duration-300 relative">
+            <button id="darkModeToggle"
+                class="absolute top-6 right-6 flex h-8 w-16 border-2 border-blue-500 overflow-hidden focus:outline-none">
+                <div id="toggleSunSide" class="flex-1 flex items-center justify-center transition-colors duration-300">
+                    <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                        fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2"></path>
+                        <path d="M12 20v2"></path>
+                        <path d="m4.93 4.93 1.41 1.41"></path>
+                        <path d="m17.66 17.66 1.41 1.41"></path>
+                        <path d="M2 12h2"></path>
+                        <path d="M20 12h2"></path>
+                        <path d="m6.34 17.66-1.41 1.41"></path>
+                        <path d="m19.07 4.93-1.41 1.41"></path>
+                    </svg>
+                </div>
+                <div id="toggleMoonSide" class="flex-1 flex items-center justify-center transition-colors duration-300">
+                    <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                        viewBox="0 0 24 24" fill="none" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                    </svg>
+                </div>
+            </button>
+            <div class="flex flex-col md:flex-row gap-8 items-center md:items-start">
 
-               <div id="profileContainer" class="relative w-32 h-32 flex-shrink-0 mx-auto md:mx-0">
+               <div id="profileContainer" class="relative w-44 h-44 flex-shrink-0 mx-auto md:mx-0">
     
     <img id="profileImg1" src="PICTURES/profile1.png" alt="Profile"
-        class="profile-img w-full h-full rounded-lg object-cover absolute top-0 left-0 transition-opacity duration-300">
+        class="profile-img w-full h-full object-cover absolute top-0 left-0 transition-opacity duration-300">
     <img id="profileImg1Hover" src="PICTURES/profile1-1.png" alt="Profile Hover"
-        class="profile-img w-full h-full rounded-lg object-cover absolute top-0 left-0 opacity-0 transition-opacity duration-300">
+        class="profile-img w-full h-full object-cover absolute top-0 left-0 opacity-0 transition-opacity duration-300">
     
     
     <img id="profileImg2" src="PICTURES/profile2.png" alt="Profile Dark"
-        class="profile-img w-full h-full rounded-lg object-cover absolute top-0 left-0 hidden transition-opacity duration-300">
+        class="profile-img w-full h-full object-cover absolute top-0 left-0 hidden transition-opacity duration-300">
     <img id="profileImg2Hover" src="PICTURES/profile2-2.png" alt="Profile Dark Hover"
-        class="profile-img w-full h-full rounded-lg object-cover absolute top-0 left-0 opacity-0 hidden transition-opacity duration-300">
+        class="profile-img w-full h-full object-cover absolute top-0 left-0 opacity-0 hidden transition-opacity duration-300">
 </div>
 
 
                 <div class="flex-1 text-center md:text-left">
                     <div class="flex flex-col md:flex-row md:items-center gap-2 mb-2">
-                        <h1 class="text-3xl font-bold text-gray-900">Mikhail Respicio</h1>
+                        <h1 class="text-4xl font-bold text-gray-900">Mikhail Respicio</h1>
                     </div>
-                    <div class="flex items-center justify-center md:justify-start gap-2 text-gray-600 mb-3">
+                    <div class="flex items-center justify-center md:justify-start gap-2 text-gray-500 mb-2 mt-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
                             <circle cx="12" cy="10" r="3"></circle>
                         </svg>
-                        <span class="text-sm">Laguna, Philippines</span>
+                        <span class="text-base">Laguna, Philippines</span>
                     </div>
-                    <p class="text-gray-700 mb-4">Graphic Designer | UI Designer | Web Developer</p>
+                    <p class="text-gray-700 mb-5 text-base font-medium">Graphic Designer | UI Designer | Web Developer</p>
 
 
 
                     <div class="flex flex-wrap gap-3 justify-center md:justify-start">
-                        <a href="Mikhail_Liudor_P._Respicio_Resume (2).pdf"
-                            download="Mikhail_Liudor_P._Respicio_Resume (2).pdf"
-                            class="inline-flex items-center gap-2 px-4 py-2 bg-black text-white font-semibold text-sm rounded-lg hover:opacity-90 transition-opacity">
+                        <a href="#" onclick="openResumeModal(); return false;"
+                            class="inline-flex items-center gap-2 px-4 py-2 bg-black text-white font-semibold text-sm hover:opacity-90 transition-opacity">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round">
@@ -252,9 +302,14 @@
                                 <line x1="12" x2="12" y1="15" y2="3"></line>
                             </svg>
                             Download My Resume
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="m9 18 6-6-6-6"></path>
+                            </svg>
                         </a>
-                        <a href="https://calendly.com/liudormikhail13/30min" download
-                            class="inline-flex items-center gap-2 px-4 py-2 border-2 border-black text-black font-semibold text-sm rounded-lg hover:bg-gray-100 transition-colors">
+                        <a href="https://calendly.com/liudormikhail13/30min"
+                            class="inline-flex items-center gap-2 px-4 py-2 border border-gray-300 text-gray-700 font-semibold text-sm hover:bg-gray-50 transition-colors">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round">
@@ -265,7 +320,7 @@
                             </svg>
                             Schedule a Meeting
                         </a>
-                         <a href="https://github.com/Mike-Rp" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+                         <a href="https://github.com/Mike-Rp" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 transition-colors">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                             </svg>
@@ -286,7 +341,7 @@
             <div class="lg:col-span-2 space-y-6">
 
 
-                <div class="bg-white rounded-lg border border-gray-200 p-6 transition-colors duration-300">
+                <div class="bg-white border border-gray-200 p-6 transition-colors duration-300">
                     <h2 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -302,7 +357,7 @@
                 </div>
 
 
-                <div class="bg-white rounded-lg border border-gray-200 p-6 transition-colors duration-300">
+                <div class="bg-white border border-gray-200 p-6 transition-colors duration-300">
                     <div class="flex items-center justify-between mb-4">
                         <h2 class="text-xl font-bold text-gray-900 flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
@@ -329,45 +384,45 @@
                         <div>
                             <h3 class="text-sm font-semibold text-gray-900 mb-2">Design Software</h3>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">Adobe
+                                <span class="px-2 py-0.5 text-sm text-gray-600 border border-gray-200">Adobe
                                     Photoshop</span>
-                                <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">Adobe
+                                <span class="px-2 py-0.5 text-sm text-gray-600 border border-gray-200">Adobe
                                     Illustrator</span>
-                                <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">Figma</span>
-                                <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">Adobe Premiere
+                                <span class="px-2 py-0.5 text-sm text-gray-600 border border-gray-200">Figma</span>
+                                <span class="px-2 py-0.5 text-sm text-gray-600 border border-gray-200">Adobe Premiere
                                     Pro</span>
-                                <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">Capcut</span>
-                                <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">Adobe After
+                                <span class="px-2 py-0.5 text-sm text-gray-600 border border-gray-200">Capcut</span>
+                                <span class="px-2 py-0.5 text-sm text-gray-600 border border-gray-200">Adobe After
                                     Effects</span>
-                                     <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">Canva</span>
+                                     <span class="px-2 py-0.5 text-sm text-gray-600 border border-gray-200">Canva</span>
                             </div>
                         </div>
 
                         <div>
                             <h3 class="text-sm font-semibold text-gray-900 mb-2">Specializations</h3>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">Web Designer</span>
-                                <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">Sports
+                                <span class="px-2 py-0.5 text-sm text-gray-600 border border-gray-200">Web Designer</span>
+                                <span class="px-2 py-0.5 text-sm text-gray-600 border border-gray-200">Sports
                                     Poster</span>
-                                <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">Social Media
+                                <span class="px-2 py-0.5 text-sm text-gray-600 border border-gray-200">Social Media
                                     Design</span>
-                                <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">Print Design</span>
-                                <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">UI Designer</span>
-                                <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">Front End
+                                <span class="px-2 py-0.5 text-sm text-gray-600 border border-gray-200">Print Design</span>
+                                <span class="px-2 py-0.5 text-sm text-gray-600 border border-gray-200">UI Designer</span>
+                                <span class="px-2 py-0.5 text-sm text-gray-600 border border-gray-200">Front End
                                     Developer</span>
-                                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">Full Stack Developer</span>
-                                     <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">Developer</span>
+                                    <span class="px-2 py-0.5 text-sm text-gray-600 border border-gray-200">Full Stack Developer</span>
+                                     <span class="px-2 py-0.5 text-sm text-gray-600 border border-gray-200">Developer</span>
                             </div>
                         </div>
 
                         <div>
                             <h3 class="text-sm font-semibold text-gray-900 mb-2">Frontend</h3>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">Tailwind CSS</span>
-                                <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">JavaScript</span>
-                                <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">React</span>
-                                <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">Next.js</span>
-                                <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">Styled Components</span>
+                                <span class="px-2 py-0.5 text-sm text-gray-600 border border-gray-200">Tailwind CSS</span>
+                                <span class="px-2 py-0.5 text-sm text-gray-600 border border-gray-200">JavaScript</span>
+                                <span class="px-2 py-0.5 text-sm text-gray-600 border border-gray-200">React</span>
+                                <span class="px-2 py-0.5 text-sm text-gray-600 border border-gray-200">Next.js</span>
+                                <span class="px-2 py-0.5 text-sm text-gray-600 border border-gray-200">Styled Components</span>
                             </div>
                             
                             </div>
@@ -376,7 +431,7 @@
                 </div>
 
 
-                <div class="bg-white rounded-lg border border-gray-200 p-6 transition-colors duration-300">
+                <div class="bg-white border border-gray-200 p-6 transition-colors duration-300">
                     <div class="flex items-center justify-between mb-4">
                         <h2 class="text-xl font-bold text-gray-900 flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
@@ -399,35 +454,43 @@
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="border border-gray-200 rounded-lg p-6 hover:border-blue-300 transition-colors flex flex-col h-full">
+                        <div class="border border-gray-200 p-6 hover:border-blue-300 transition-colors flex flex-col h-full">
                             <h3 class="font-semibold text-gray-900 mb-2">Find a Cafe</h3>
                             <p class="text-sm text-gray-600 mb-4 flex-1">Web Developer & UI/UX Designer</p>
                             <a href="viewprojweb4.html"
-                                class="block px-4 py-2 bg-black text-white font-bold text-sm rounded-lg hover:opacity-90 transition-opacity text-center mt-auto">View
-                                project</a>
+                                class="inline-flex items-center gap-2 px-4 py-2 bg-black text-white font-semibold text-sm hover:opacity-90 transition-opacity mt-auto">
+                                View project
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+                            </a>
                         </div>
 
-                        <div class="border border-gray-200 rounded-lg p-6 hover:border-blue-300 transition-colors flex flex-col h-full">
+                        <div class="border border-gray-200 p-6 hover:border-blue-300 transition-colors flex flex-col h-full">
                             <h3 class="font-semibold text-gray-900 mb-2">Tech Service Ph</h3>
                             <p class="text-sm text-gray-600 mb-4 flex-1">Web Developer & UI/UX Designer</p>
                             <a href="viewprojweb5.html"
-                                class="block px-4 py-2 bg-black text-white font-bold text-sm rounded-lg hover:opacity-90 transition-opacity text-center mt-auto">View
-                                project</a>
+                                class="inline-flex items-center gap-2 px-4 py-2 bg-black text-white font-semibold text-sm hover:opacity-90 transition-opacity mt-auto">
+                                View project
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+                            </a>
                         </div>
 
-                        <div class="border border-gray-200 rounded-lg p-6 hover:border-blue-300 transition-colors flex flex-col h-full">
+                        <div class="border border-gray-200 p-6 hover:border-blue-300 transition-colors flex flex-col h-full">
                             <h3 class="font-semibold text-gray-900 mb-2">Graphic Task</h3>
                             <p class="text-sm text-gray-600 mb-4 flex-1">Web Developer & UI/UX Designer</p>
                             <a href="viewprojweb6.html"
-                                class="block px-4 py-2 bg-black text-white font-bold text-sm rounded-lg hover:opacity-90 transition-opacity text-center mt-auto">View
-                                project</a>
+                                class="inline-flex items-center gap-2 px-4 py-2 bg-black text-white font-semibold text-sm hover:opacity-90 transition-opacity mt-auto">
+                                View project
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+                            </a>
                         </div>
-                        <div class="border border-gray-200 rounded-lg p-6 hover:border-blue-300 transition-colors flex flex-col h-full">
+                        <div class="border border-gray-200 p-6 hover:border-blue-300 transition-colors flex flex-col h-full">
                            <h3 class="font-semibold text-gray-900 mb-2">Bugdet Tracker</h3>
                             <p class="text-sm text-gray-600 mb-4 flex-1">Web Developer & UI/UX Designer</p>
                             <a href="viewprojweb3.html"
-                                class="block px-4 py-2 bg-black text-white font-bold text-sm rounded-lg hover:opacity-90 transition-opacity text-center mt-auto">View
-                                project</a>
+                                class="inline-flex items-center gap-2 px-4 py-2 bg-black text-white font-semibold text-sm hover:opacity-90 transition-opacity mt-auto">
+                                View project
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+                            </a>
                         </div>
 
                     </div>
@@ -439,7 +502,7 @@
             <div class="space-y-6">
 
 
-                <div class="bg-white rounded-lg border border-gray-200 p-6 transition-colors duration-300">
+                <div class="bg-white border border-gray-200 p-6 transition-colors duration-300">
                     <h2 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -449,96 +512,84 @@
                         Experience
                     </h2>
 
-                    <div class="space-y-4">
-                        <div class="flex gap-4 items-start group">
-                            <div
-                                class="w-3 h-3 rounded-full bg-blue-500 group-hover:bg-red-500 transition-colors duration-300 mt-1 flex-shrink-0">
-                            </div>
+                    <div class="relative space-y-4">
+                        <div class="exp-line absolute left-[5px] top-2 bottom-2 w-px"></div>
+
+                        <div class="flex gap-4 items-start">
+                            <div class="w-3 h-3 exp-active bg-gray-900 mt-1 flex-shrink-0 relative z-10"></div>
                             <div class="flex-1">
                                 <div class="flex justify-between items-start mb-1">
-                                    <h3 class="font-semibold text-gray-900">Sports Graphic Designer</h3>
+                                    <h3 class="font-bold text-gray-900">Sports Graphic Designer</h3>
                                     <span class="text-xs text-gray-500">2025</span>
                                 </div>
                                 <p class="text-sm text-gray-600 mb-1">Freelance</p>
                             </div>
                         </div>
 
-                         <div class="flex gap-4 items-start group">
-                            <div
-                                class="w-3 h-3 rounded-full bg-gray-300 group-hover:bg-blue-500 transition-colors duration-300 mt-1 flex-shrink-0">
-                            </div>
+                        <div class="flex gap-4 items-start">
+                            <div class="w-3 h-3 exp-inactive border border-gray-400 bg-white mt-1 flex-shrink-0 relative z-10"></div>
                             <div class="flex-1">
                                 <div class="flex justify-between items-start mb-1">
-                                    <h3 class="font-semibold text-gray-900">Frontend Developer Mini Application</h3>
+                                    <h3 class="font-bold text-gray-900">Frontend Developer Mini Application</h3>
                                     <span class="text-xs text-gray-500">2025</span>
                                 </div>
                                 <p class="text-sm text-gray-600 mb-1">Indonesian Client</p>
                             </div>
                         </div>
 
-                        <div class="flex gap-4 items-start group">
-                            <div
-                                class="w-3 h-3 rounded-full bg-gray-300 group-hover:bg-blue-500 transition-colors duration-300 mt-1 flex-shrink-0">
-                            </div>
+                        <div class="flex gap-4 items-start">
+                            <div class="w-3 h-3 exp-inactive border border-gray-400 bg-white mt-1 flex-shrink-0 relative z-10"></div>
                             <div class="flex-1">
                                 <div class="flex justify-between items-start mb-1">
-                                    <h3 class="font-semibold text-gray-900">Graphic Designer & Social Media Manager</h3>
+                                    <h3 class="font-bold text-gray-900">Graphic Designer & Social Media Manager</h3>
                                     <span class="text-xs text-gray-500">2025</span>
                                 </div>
                                 <p class="text-sm text-gray-600 mb-1">Computer Society</p>
                             </div>
                         </div>
 
-                        <div class="flex gap-4 items-start group">
-                            <div
-                                class="w-3 h-3 rounded-full bg-gray-300 group-hover:bg-blue-500 transition-colors duration-300 mt-1 flex-shrink-0">
-                            </div>
+                        <div class="flex gap-4 items-start">
+                            <div class="w-3 h-3 exp-inactive border border-gray-400 bg-white mt-1 flex-shrink-0 relative z-10"></div>
                             <div class="flex-1">
                                 <div class="flex justify-between items-start mb-1">
-                                    <h3 class="font-semibold text-gray-900">Graphic Designer & Motion Designer </h3>
+                                    <h3 class="font-bold text-gray-900">Graphic Designer & Motion Designer</h3>
                                     <span class="text-xs text-gray-500">2024</span>
                                 </div>
                                 <p class="text-sm text-gray-600 mb-1">Casinodrop</p>
                             </div>
                         </div>
 
-                        <div class="flex gap-4 items-start group">
-                            <div
-                                class="w-3 h-3 rounded-full bg-gray-300 group-hover:bg-blue-500 transition-colors duration-300 mt-1 flex-shrink-0">
-                            </div>
+                        <div class="flex gap-4 items-start">
+                            <div class="w-3 h-3 exp-inactive border border-gray-400 bg-white mt-1 flex-shrink-0 relative z-10"></div>
                             <div class="flex-1">
                                 <div class="flex justify-between items-start mb-1">
-                                    <h3 class="font-semibold text-gray-900">BS Information Technology</h3>
+                                    <h3 class="font-bold text-gray-900">BS Information Technology</h3>
                                     <span class="text-xs text-gray-500">2023</span>
                                 </div>
                                 <p class="text-sm text-gray-600 mb-1">STI College</p>
                             </div>
                         </div>
 
-                        <div class="flex gap-4 items-start group">
-                            <div
-                                class="w-3 h-3 rounded-full bg-gray-300 group-hover:bg-blue-500 transition-colors duration-300 mt-1 flex-shrink-0">
-                            </div>
+                        <div class="flex gap-4 items-start">
+                            <div class="w-3 h-3 exp-inactive border border-gray-400 bg-white mt-1 flex-shrink-0 relative z-10"></div>
                             <div class="flex-1">
                                 <div class="flex justify-between items-start mb-1">
-                                    <h3 class="font-semibold text-gray-900">Stream Brand Designer </h3>
+                                    <h3 class="font-bold text-gray-900">Stream Brand Designer</h3>
                                     <span class="text-xs text-gray-500">2022</span>
                                 </div>
                                 <p class="text-sm text-gray-600 mb-1">Freelance</p>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="flex gap-4 items-start group">
-                        <div
-                            class="w-3 h-3 rounded-full bg-gray-300 group-hover:bg-blue-500 transition-colors duration-300 mt-1 flex-shrink-0">
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex justify-between items-start mb-1">
-                                <h3 class="font-semibold text-gray-900">Graphic Designer & Vlog Editor</h3>
-                                <span class="text-xs text-gray-500">2021</span>
+                        <div class="flex gap-4 items-start">
+                            <div class="w-3 h-3 exp-inactive border border-gray-400 bg-white mt-1 flex-shrink-0 relative z-10"></div>
+                            <div class="flex-1">
+                                <div class="flex justify-between items-start mb-1">
+                                    <h3 class="font-bold text-gray-900">Graphic Designer & Vlog Editor</h3>
+                                    <span class="text-xs text-gray-500">2021</span>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-1">Freelance</p>
                             </div>
-                            <p class="text-sm text-gray-600 mb-1">Freelance</p>
                         </div>
                     </div>
 
@@ -549,14 +600,16 @@
 
 
 
-                <div class="bg-white rounded-lg border border-gray-200 p-6 transition-colors duration-300">
-                    <h2 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="8" r="6"></circle>
-                            <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
-                        </svg>
-                        Recent Certifications
+                <div class="bg-white border border-gray-200 p-6 transition-colors duration-300">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-bold text-gray-900 flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="8" r="6"></circle>
+                                <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
+                            </svg>
+                            Recent Certifications
+                        </h2>
                         <a href="certificates.html"
                             class="text-sm font-semibold text-gray-700 hover:text-gray-900 transition-colors flex items-center gap-1">
                             View All
@@ -566,32 +619,32 @@
                                 <path d="m9 18 6-6-6-6"></path>
                             </svg>
                         </a>
-                    </h2>
+                    </div>
                     
 
                     <div class="space-y-3">
                         <a href="https://drive.google.com/file/d/1ZUhIi6TzRs-Wmsr0W8cApMK_wuj9PYN0/view?usp=sharing"
                             target="_blank"
-                            class="block p-3 bg-gray-50 rounded-lg hover:bg-blue-100 transition-colors cursor-pointer">
+                            class="block py-3 border-b border-gray-100 hover:bg-gray-50 transition-colors cursor-pointer px-1">
                             <h3 class="font-semibold text-sm text-gray-900 mb-1">Adobe Premiere Pro Master Class</h3>
                             <p class="text-xs text-gray-600">Graphics Media Training Philippines</p>
                         </a>
 
                         <a href="https://drive.google.com/file/d/1bvFbskR7HOmva3NqI1OR9ot46u-3F4-I/view?usp=sharing"
                             target="_blank"
-                            class="block p-3 bg-gray-50 rounded-lg hover:bg-blue-100 transition-colors cursor-pointer">
+                            class="block py-3 border-b border-gray-100 hover:bg-gray-50 transition-colors cursor-pointer px-1">
                             <h3 class="font-semibold text-sm text-gray-900 mb-1">Graphic Design Course Advance </h3>
                             <p class="text-xs text-gray-600">Phixels Creative Academy Philippines</p>
                         </a>
                         <a href="https://www.codecred.dev/verify/225043f1-e22f-49ad-977c-39c099855ba4"
                             target="_blank"
-                            class="block p-3 bg-gray-50 rounded-lg hover:bg-blue-100 transition-colors cursor-pointer">
+                            class="block py-3 border-b border-gray-100 hover:bg-gray-50 transition-colors cursor-pointer px-1">
                             <h3 class="font-semibold text-sm text-gray-900 mb-1">UI/UX Principles</h3>
                             <p class="text-xs text-gray-600">CodeCred</p>
                         </a>
                         <a href="https://www.codecred.dev/verify/88e0dda2-8eb4-4f93-a6eb-443b3e3066c8"
                             target="_blank"
-                            class="block p-3 bg-gray-50 rounded-lg hover:bg-blue-100 transition-colors cursor-pointer">
+                            class="block py-3 border-b border-gray-100 hover:bg-gray-50 transition-colors cursor-pointer px-1">
                             <h3 class="font-semibold text-sm text-gray-900 mb-1">Cybersecurity Fundamentals</h3>
                             <p class="text-xs text-gray-600">CodeCred</p>
                         </a>
@@ -600,7 +653,7 @@
 
                          <a href="https://www.codecred.dev/verify/59db8bb5-4b05-41a2-a82f-1365234bac2b"
                             target="_blank"
-                            class="block p-3 bg-gray-50 rounded-lg hover:bg-blue-100 transition-colors cursor-pointer">
+                            class="block py-3 border-b border-gray-100 hover:bg-gray-50 transition-colors cursor-pointer px-1">
                             <h3 class="font-semibold text-sm text-gray-900 mb-1">HTML Fundamentals</h3>
                             <p class="text-xs text-gray-600">CodeCred</p>
                         </a>
@@ -616,33 +669,58 @@
 
         const html = document.documentElement;
         const darkModeToggle = document.getElementById('darkModeToggle');
-        const moonIcon = document.getElementById('moonIcon');
-        const sunIcon = document.getElementById('sunIcon');
 
 
 
         const isDarkMode = localStorage.getItem('darkMode') === 'true';
         if (isDarkMode) {
             html.classList.add('dark');
-            sunIcon.classList.add('hidden');
-            moonIcon.classList.remove('hidden');
         } else {
-
             html.classList.remove('dark');
-            sunIcon.classList.remove('hidden');
-            moonIcon.classList.add('hidden');
         }
-
 
         darkModeToggle.addEventListener('click', function () {
             html.classList.toggle('dark');
             localStorage.setItem('darkMode', html.classList.contains('dark'));
-
-
-            sunIcon.classList.toggle('hidden');
-            moonIcon.classList.toggle('hidden');
         });
 
+
+        // Experience squares click interaction
+        document.querySelectorAll('.exp-inactive, .exp-active').forEach(dot => {
+            dot.style.cursor = 'pointer';
+            dot.addEventListener('click', function () {
+                // Reset all to inactive
+                document.querySelectorAll('.exp-active, .exp-inactive').forEach(d => {
+                    d.classList.remove('exp-active', 'bg-gray-900');
+                    d.classList.add('exp-inactive', 'border', 'border-gray-400', 'bg-white');
+                });
+                // Set clicked one to active
+                this.classList.remove('exp-inactive', 'border', 'border-gray-400', 'bg-white');
+                this.classList.add('exp-active', 'bg-gray-900');
+            });
+        });
+
+        // Print resume from iframe
+        function printResume() {
+            document.getElementById('resumeFrame').contentWindow.print();
+        }
+
+        // Resume modal
+        function openResumeModal() {
+            const modal = document.getElementById('resumeModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeResumeModal() {
+            const modal = document.getElementById('resumeModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+        document.getElementById('resumeModal').addEventListener('click', function(e) {
+            if (e.target === this) closeResumeModal();
+        });
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -655,6 +733,247 @@
                 }
             });
         });
+    </script>
+
+    <!-- Chat Widget -->
+    <div id="chatWidget" class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+
+        <!-- Chat Panel -->
+        <div id="chatPanel" class="hidden flex-col bg-white border border-gray-200 shadow-2xl overflow-hidden" style="width: 320px; height: 480px;">
+
+            <!-- Header -->
+            <div class="flex items-center justify-between px-4 py-3 bg-black text-white flex-shrink-0">
+                <div class="flex items-center gap-3">
+                    <div class="relative">
+                        <img src="PICTURES/profile1.png" class="w-9 h-9 object-cover" alt="Mikhail">
+                        <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-400 border-2 border-black"></span>
+                    </div>
+                    <div>
+                        <div class="font-bold text-sm">Mikhail Respicio</div>
+                        <div class="text-xs text-green-400">Online</div>
+                    </div>
+                </div>
+                <button onclick="toggleChat()" class="hover:opacity-70 transition-opacity">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+                </button>
+            </div>
+
+            <!-- Messages -->
+            <div id="chatMessages" class="flex-1 overflow-y-auto p-4 space-y-3 bg-gray-50">
+                <div class="flex gap-2 items-start">
+                    <img src="PICTURES/profile1.png" class="w-6 h-6 object-cover flex-shrink-0 mt-1" alt="">
+                    <div class="bg-white border border-gray-200 px-3 py-2 text-sm text-gray-800 max-w-xs leading-relaxed shadow-sm">
+                        Hi there! 👋 Thanks for visiting my portfolio. Feel free to ask me anything — I'm happy to help!
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Replies -->
+            <div id="quickReplies" class="px-3 py-2 flex flex-wrap gap-1.5 border-t border-gray-100 bg-white flex-shrink-0">
+                <button onclick="sendQuick('What are your skills?')" class="text-xs px-2 py-1 border border-gray-300 text-gray-600 hover:bg-gray-50 transition-colors">Skills</button>
+                <button onclick="sendQuick('Are you available for work?')" class="text-xs px-2 py-1 border border-gray-300 text-gray-600 hover:bg-gray-50 transition-colors">Availability</button>
+                <button onclick="sendQuick('What is your rate?')" class="text-xs px-2 py-1 border border-gray-300 text-gray-600 hover:bg-gray-50 transition-colors">Rate</button>
+                <button onclick="sendQuick('How can I contact you?')" class="text-xs px-2 py-1 border border-gray-300 text-gray-600 hover:bg-gray-50 transition-colors">Contact</button>
+            </div>
+
+            <!-- Input -->
+            <div class="flex gap-2 px-3 py-3 border-t border-gray-200 bg-white flex-shrink-0">
+                <input id="chatInput" type="text" placeholder="Type a message..."
+                    class="flex-1 text-sm border border-gray-200 px-3 py-2 focus:outline-none focus:border-gray-400 transition-colors"
+                    onkeydown="if(event.key==='Enter') sendMessage()">
+                <button onclick="sendMessage()" class="px-3 py-2 bg-black text-white hover:opacity-90 transition-opacity flex-shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Toggle Button -->
+        <button onclick="toggleChat()" id="chatToggleBtn"
+            class="flex items-center gap-2 px-5 py-3 bg-black text-white font-semibold text-sm hover:opacity-90 transition-opacity shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            Chat with Mikhail
+        </button>
+    </div>
+
+    <script>
+        // ── Chat Widget ──
+        const botResponses = {
+            whoAreYou: `I'm Mikhail Liudor P. Respicio — a Graphic Designer, UI/UX Designer, and Web Developer based in Laguna, Philippines. I have nearly 6 years of experience creating visually compelling and user-centered digital solutions.\n\nI'm a fast learner who can quickly adapt to new tools, technologies, and workflows, which allows me to consistently deliver high-quality work across different areas of design and development.`,
+            aboutYourself: `I'm a passionate creative professional specializing in Graphic Design, UI/UX Design, and Web Development. With nearly 6 years of experience, I've worked on a wide range of projects — from social media graphics and motion design to full web applications.\n\nI combine visual storytelling with modern design principles to deliver work that is both aesthetically pleasing and highly functional. I'm currently in my final year of a Bachelor of Science in Information Technology at STI College Sta. Rosa.`,
+            whereFrom: `I'm from Laguna, Philippines. 📍`,
+            age: `I'm 21 years old.`,
+            experience: `I have almost 6 years of experience across Graphic Design, UI/UX Design, and Web Development.\n\nMy journey started in 2021 as a freelance Graphic Designer and Vlog Editor, and since then I've continuously expanded my skill set to include motion design, web development, and full UI/UX design.`,
+            clients: `Yes, I have worked with various clients across different industries. Some of my past clients include Casinodrop (motion and visual design), an Indonesian client (front-end mini application), and multiple freelance clients for sports graphics, stream branding, and social media design.`,
+            projectTypes: `I've worked on a diverse range of projects including:\n\n• Front-end web development and UI/UX design\n• Social media graphic design and content creation\n• Motion design and video editing\n• Web-based systems and Telegram mini applications\n• Stream branding and overlay design\n\nEach project is approached with a focus on quality, functionality, and visual impact.`,
+            remote: `Yes, I work fully remotely and am comfortable collaborating with clients from anywhere in the world. 🌐`,
+            student: `I'm both a student and a working professional! I'm currently in my final year of a Bachelor of Science in Information Technology at STI College Sta. Rosa, where I attend half-day classes. This gives me plenty of available time — particularly in the evenings — to take on projects and deliver quality work for clients.`,
+            services: `Here's what I offer:\n\n🎨 Graphic Design — Social media graphics, sports visuals, print design, and motion design\n💻 Web Development — Front-end development, full web applications, and web-based systems\n🖌️ UI/UX Design — Wireframing, prototyping, and high-fidelity UI design using Figma\n📱 Social Media Content — Content creation and design for various platforms\n🎬 Video Editing — Professional video editing for vlogs, brand content, and social media`,
+            logo: `Logo design is not currently one of my offered services. However, I'd be happy to assist with other graphic design needs such as social media visuals, web design, or branding assets. Feel free to reach out and we can discuss what works best for your needs!`,
+            buildWebsite: `Absolutely! I specialize in building responsive, modern websites using HTML, CSS, JavaScript, Tailwind CSS, React, and Next.js. Whether it's a landing page, portfolio site, or a full web application — I'd love to help bring your vision to life. 🚀`,
+            socialMedia: `Yes! Social media design is one of my core services. I create engaging graphics, banners, and visual content tailored to your brand identity and target audience. 📲`,
+            videoEditing: `Yes, I do video editing! I would rate my skills at around 8/10 — I'm proficient with Adobe Premiere Pro and Capcut, and I can handle content for social media, vlogs, and brand videos. 🎬`,
+            bothDesignDev: `Yes, that's actually one of my strengths! I can handle both the design and development side of a project — from creating the UI/UX design in Figma to building and deploying the actual website. This means you get a seamless experience without needing to coordinate between separate designers and developers. 💡`,
+            timeline: `Project timelines vary depending on the scope and complexity:\n\n⏱️ Websites — typically up to 2 weeks\n🎨 Graphic Design — often delivered within the same day or a few days\n\nI'll provide a more accurate timeline once I have a better understanding of your project requirements.`,
+            process: `Here's how I typically approach a project:\n\n1️⃣ Discovery — I gather all necessary details: project purpose, target audience, goals, and requirements.\n2️⃣ Design — I create the UI/UX design and share a prototype for your review and feedback.\n3️⃣ Development — Once the design is approved, I proceed with building the product.\n4️⃣ Deployment — I handle the final deployment and ensure everything is running smoothly.\n\nClear communication is maintained throughout to ensure the result meets your expectations.`,
+            deposit: `Yes, for project-based work I typically require a 50% deposit upfront before starting. This ensures commitment from both sides and covers the initial work.\n\nFor full-time or part-time arrangements, we can discuss payment terms that work best for both of us.`,
+            startWorking: `Getting started is easy! You can reach me through:\n\n💬 Telegram: @MikeRespicio\n📱 WhatsApp: +63 912 818 1093\n📅 Schedule a meeting: calendly.com/liudormikhail13\n\nJust send me a message with your project details and we'll take it from there!`,
+            tools: `Here are the tools and technologies I work with:\n\n🎨 Design: Figma, Adobe Photoshop, Adobe Illustrator, Adobe After Effects, Premiere Pro, Capcut, Canva\n💻 Development: HTML, CSS, JavaScript, Tailwind CSS, React, Next.js, SQL\n🛠️ Others: Git, GitHub, VS Code`,
+            figma: `Yes! Figma is my primary design tool and my strongest one — I'd confidently rate myself 10/10 in Figma. I use it for everything from wireframing and prototyping to high-fidelity UI designs and design systems. ✏️`,
+            existingWebsite: `Yes, absolutely! I can work with your existing website to update content, improve the design, fix issues, or add new features. Just share the details and I'll assess the best way to help. 🛠️`,
+            collaboration: `Definitely! I'm always open to collaborating with other creatives, developers, and businesses. Whether it's a joint project or a long-term partnership, feel free to reach out and let's see how we can create something great together. 🤝`,
+            portfolioSite: `Yes! You're actually on it right now. 😊 Feel free to explore my projects, skills, and certifications. If you have any questions about my work, don't hesitate to ask!`,
+            previousWork: `Of course! You can browse my featured projects right here on my portfolio. Each project includes details about what I did, the technologies used, and a live preview where available.\n\nHead over to the Projects section to take a look! 👇`,
+            skills: `I specialize in three main areas:\n\n🎨 Graphic & UI Design\nFigma, Adobe Photoshop, Adobe Illustrator, Adobe After Effects, Premiere Pro, Capcut, Canva\n\n💻 Web Development\nHTML, CSS, JavaScript, Tailwind CSS, React, Next.js\n\n✨ Specializations\nUI/UX Design, Motion Design, Social Media Design, Print Design, Stream Branding`,
+            available: `Yes, I'm currently available for both full-time and part-time opportunities! 🙌\n\nMy working hours are typically between 9:00 AM – 9:00 PM (UTC+8). Feel free to reach out and let's discuss what you have in mind.`,
+            contact: `Here are the best ways to reach me:\n\n💬 Telegram: @MikeRespicio\n📱 WhatsApp: +63 912 818 1093\n📘 Facebook & Instagram: search "Mikhail Respicio"\n📅 Schedule a meeting: calendly.com/liudormikhail13\n\nFeel free to reach out anytime!`,
+            rate: `My rate varies depending on the scope and complexity of the project. 💼\n\nShare some details about what you need and I'll provide an accurate estimate. Feel free to reach me on Telegram @MikeRespicio to discuss further.`,
+            fallback: `Sorry, I'm having trouble connecting right now. Please try again later.`
+        };
+
+        const botResponsesTL = {
+            whoAreYou: `Ako si Mikhail Liudor P. Respicio — isang Graphic Designer, UI/UX Designer, at Web Developer mula sa Laguna, Philippines. Mayroon akong halos 6 na taon ng karanasan sa paglikha ng mga visual at digital na solusyon na nakatuon sa gumagamit.\n\nMabilis akong matuto at madaling mag-adapt sa bagong mga kasangkapan at teknolohiya, kaya palagi akong nagbibigay ng de-kalidad na trabaho sa iba't ibang larangan ng disenyo at development.`,
+            aboutYourself: `Ako ay isang masigasig na creative professional na nag-espesyalisa sa Graphic Design, UI/UX Design, at Web Development. Sa halos 6 na taon ng karanasan, nagtatrabaho na ako sa iba't ibang uri ng proyekto — mula sa social media graphics at motion design hanggang sa mga kumpletong web application.\n\nPinagsasama ko ang visual storytelling at modernong prinsipyo ng disenyo para makapaghatid ng trabahong maganda at highly functional. Kasalukuyan akong nasa huling taon ng Bachelor of Science in Information Technology sa STI College Sta. Rosa.`,
+            whereFrom: `Ako ay mula sa Laguna, Philippines. 📍`,
+            age: `21 taon na po ako.`,
+            experience: `Mayroon akong halos 6 na taon ng karanasan sa Graphic Design, UI/UX Design, at Web Development.\n\nNagsimula ako noong 2021 bilang freelance Graphic Designer at Vlog Editor, at mula noon ay patuloy akong nagpapaunlad ng aking mga kasanayan kasama ang motion design, web development, at UI/UX design.`,
+            clients: `Oo, nagtrabaho na ako para sa iba't ibang kliyente sa iba't ibang industriya. Kabilang sa aking mga nakaraang kliyente ang Casinodrop (motion at visual design), isang kliyente mula Indonesia (front-end mini application), at marami pang freelance na kliyente para sa sports graphics, stream branding, at social media design.`,
+            projectTypes: `Nagtrabaho na ako sa iba't ibang uri ng proyekto kabilang ang:\n\n• Front-end web development at UI/UX design\n• Social media graphic design at content creation\n• Motion design at video editing\n• Web-based systems at Telegram mini applications\n• Stream branding at overlay design\n\nBawat proyekto ay inaasikaso ko nang may pagtuon sa kalidad, functionality, at visual impact.`,
+            remote: `Oo, fully remote akong nagtatrabaho at komportable akong makipagtulungan sa mga kliyente kahit saan sa mundo. 🌐`,
+            student: `Estudyante at propesyonal ako sa iisang pagkakataon! Kasalukuyan akong nasa huling taon ng BS Information Technology sa STI College Sta. Rosa, kung saan half-day lang ang aking klase. Kaya naman marami akong oras — lalo na sa gabi — para tumanggap ng mga proyekto at maghatid ng de-kalidad na trabaho para sa mga kliyente.`,
+            services: `Narito ang aking mga serbisyo:\n\n🎨 Graphic Design — Social media graphics, sports visuals, print design, at motion design\n💻 Web Development — Front-end development, kumpletong web application, at web-based systems\n🖌️ UI/UX Design — Wireframing, prototyping, at high-fidelity UI design gamit ang Figma\n📱 Social Media Content — Content creation at design para sa iba't ibang platform\n🎬 Video Editing — Propesyonal na video editing para sa vlogs, brand content, at social media`,
+            logo: `Hindi kasama ang logo design sa aking mga serbisyo sa ngayon. Ngunit maligayang tutulong ako sa iba pang pangangailangan sa disenyo tulad ng social media visuals, web design, o branding assets. Huwag mag-atubiling makipag-ugnayan at pag-usapan natin kung ano ang pinakaangkop para sa inyo!`,
+            buildWebsite: `Syempre! Nag-espesyalisa ako sa pagbuo ng responsive at modernong mga website gamit ang HTML, CSS, JavaScript, Tailwind CSS, React, at Next.js. Maging ito man ay landing page, portfolio site, o kumpletong web application — sabik akong tulungan kang gawing totoo ang iyong ideya. 🚀`,
+            socialMedia: `Oo! Ang social media design ay isa sa aking pangunahing serbisyo. Gumagawa ako ng mga engaging na graphics, banners, at visual content na iniaangkop sa inyong brand identity at target audience. 📲`,
+            videoEditing: `Oo, gumagawa rin ako ng video editing! Ilalagay ko ang aking kasanayan sa 8/10 — bihasa ako sa Adobe Premiere Pro at Capcut, at kaya ko ang content para sa social media, vlogs, at brand videos. 🎬`,
+            bothDesignDev: `Oo, iyon nga ang isa sa aking lakas! Kaya kong hawakan ang parehong bahagi ng disenyo at development ng isang proyekto — mula sa paglikha ng UI/UX design sa Figma hanggang sa pagbuo at pag-deploy ng aktwal na website. Ibig sabihin, makakakuha ka ng seamless na karanasan nang hindi na kailangang mag-coordinate sa magkahiwalay na designer at developer. 💡`,
+            timeline: `Ang tagal ng proyekto ay depende sa laki at kumplikasyon nito:\n\n⏱️ Mga Website — karaniwang hanggang 2 linggo\n🎨 Graphic Design — madalas naihahatid sa loob ng araw o ilang araw\n\nMagbibigay ako ng mas tumpak na timeline kapag nalaman ko na ang mga detalye ng iyong proyekto.`,
+            process: `Narito kung paano ko inaapproach ang isang proyekto:\n\n1️⃣ Discovery — Kinokolekta ko ang lahat ng detalye: layunin, target audience, at requirements.\n2️⃣ Design — Gumagawa ako ng UI/UX design at nagbabahagi ng prototype para sa iyong feedback.\n3️⃣ Development — Kapag naaprubahan na ang disenyo, sisimulan ko na ang pagbuo.\n4️⃣ Deployment — Hahawakan ko ang huling deployment at sisiguruhing maayos ang lahat.\n\nMayroong malinaw na komunikasyon sa buong proseso para masiguro na ang resulta ay nakakatugon sa iyong mga inaasahan.`,
+            deposit: `Oo, para sa project-based na trabaho, karaniwang nangangailangan ako ng 50% deposit bago magsimula. Ito ay para masigurado ang commitment mula sa magkabilang panig at masaklaw ang paunang trabaho.\n\nPara sa full-time o part-time na ayos, maaari tayong mag-usap ng mga tuntunin sa pagbabayad na angkop para sa ating dalawa.`,
+            startWorking: `Madali lang magsimula! Maaari kang makipag-ugnayan sa akin sa pamamagitan ng:\n\n💬 Telegram: @MikeRespicio\n📱 WhatsApp: +63 912 818 1093\n📅 Mag-schedule ng meeting: calendly.com/liudormikhail13\n\nMagpadala lang ng mensahe kasama ang mga detalye ng iyong proyekto at sisimulan na nating pagusapan!`,
+            tools: `Narito ang mga kasangkapan at teknolohiyang ginagamit ko:\n\n🎨 Design: Figma, Adobe Photoshop, Adobe Illustrator, Adobe After Effects, Premiere Pro, Capcut, Canva\n💻 Development: HTML, CSS, JavaScript, Tailwind CSS, React, Next.js, SQL\n🛠️ Iba pa: Git, GitHub, VS Code`,
+            figma: `Oo! Figma ang aking pangunahing kasangkapan sa disenyo at pinaka-magaling na kasanayan ko — buong kumpiyansa ko itong i-rate ng 10/10. Ginagamit ko ito para sa lahat mula sa wireframing at prototyping hanggang sa high-fidelity UI designs at design systems. ✏️`,
+            existingWebsite: `Oo, syempre! Kaya ko ang makipagtulungan sa iyong kasalukuyang website para mag-update ng content, mapabuti ang disenyo, ayusin ang mga isyu, o magdagdag ng bagong features. Ibahagi mo lang ang mga detalye at susuriin ko kung paano ko pinakamainam na matutulungan ka. 🛠️`,
+            collaboration: `Syempre! Laging bukas ako sa pakikipagtulungan sa ibang mga creative, developer, at negosyo. Maging ito man ay isang joint project o pangmatagalang partnership, huwag mag-atubiling makipag-ugnayan at tingnan natin kung paano tayo makakagawa ng isang magandang bagay. 🤝`,
+            portfolioSite: `Oo! Nandito ka nga sa kanya ngayon. 😊 Huwag mag-atubiling tingnan ang aking mga proyekto, kasanayan, at sertipikasyon. Kung mayroon kang mga tanong tungkol sa aking trabaho, huwag mag-atubiling magtanong!`,
+            previousWork: `Syempre! Maaari mong tingnan ang aking mga featured na proyekto dito sa aking portfolio. Bawat proyekto ay may kasamang mga detalye tungkol sa aking ginawa, mga teknolohiyang ginamit, at live preview kung available.\n\nPuntahan ang seksyon ng Projects para makita! 👇`,
+            skills: `Nag-espesyalisa ako sa tatlong pangunahing larangan:\n\n🎨 Graphic & UI Design\nFigma, Adobe Photoshop, Adobe Illustrator, Adobe After Effects, Premiere Pro, Capcut, Canva\n\n💻 Web Development\nHTML, CSS, JavaScript, Tailwind CSS, React, Next.js\n\n✨ Mga Espesyalidad\nUI/UX Design, Motion Design, Social Media Design, Print Design, Stream Branding`,
+            available: `Oo, kasalukuyan akong available para sa full-time at part-time na oportunidad! 🙌\n\nAng aking oras ng trabaho ay karaniwang 9:00 AM – 9:00 PM (UTC+8). Huwag mag-atubiling makipag-ugnayan at pag-usapan natin ang iyong mayroon sa isip.`,
+            contact: `Narito ang pinakamainam na paraan para makipag-ugnayan sa akin:\n\n💬 Telegram: @MikeRespicio\n📱 WhatsApp: +63 912 818 1093\n📘 Facebook at Instagram: hanapin ang "Mikhail Respicio"\n📅 Mag-schedule ng meeting: calendly.com/liudormikhail13\n\nHuwag mag-atubiling makipag-ugnayan anumang oras!`,
+            rate: `Ang aking rate ay depende sa laki at kumplikasyon ng proyekto. 💼\n\nIbahagi ang ilang detalye tungkol sa iyong pangangailangan at magbibigay ako ng tumpak na estimate. Huwag mag-atubiling makipag-ugnayan sa akin sa Telegram @MikeRespicio para mapag-usapan pa.`,
+            fallback: `Paumanhin, nagkakaroon ako ng problema sa koneksyon ngayon. Pakisubukang muli mamaya.`
+        };
+
+        function isTagalog(msg) {
+            const m = msg.toLowerCase();
+            return /\b(ano|sino|saan|bakit|paano|magkano|pwede|po\b|opo|ba\b|yung|yun\b|ito\b|iyan|iyon|nag|mga|lang\b|naman|talaga|ikaw|ako\b|siya\b|kami|tayo\b|kayo|sila\b|hindi|mayroon|meron|gusto|para\b|kung\b|kapag|salamat|kumusta|anong|sinong|parang|ganyan|ganito|kailangan|ayaw|dito\b|doon|kanila|niya\b|namin|natin|ninyo|nila\b|lahat|kahit|pero\b|dahil|kasi|tapos|bago\b|pwede|di\b|oo\b|sige|maganda|mahal|trabaho|gawa|gawa|tanong|sagot|libre|bayad|kliyente|proyekto|disenyo|website|marunong|matuto|gusto ko|kaya mo|mayroon ka|may ba|ano ba|paano ba|saan ba|sino ka|anong gagawin)\b/.test(m);
+        }
+
+        function getResponse(msg) {
+            const m = msg.toLowerCase();
+            const lang = isTagalog(m) ? 'tl' : 'en';
+            if (m.match(/who are you|who is mikhail|introduce yourself|sino ka|sino si mikhail|ipakilala/)) return { type: 'whoAreYou', lang };
+            if (m.match(/tell me about|about yourself|background|describe yourself|tungkol sa iyong sarili|kwento mo|background mo/)) return { type: 'aboutYourself', lang };
+            if (m.match(/where are you from|where.*from|location|based|country|city|place|saan ka|taga saan|taga-saan|galing saan/)) return { type: 'whereFrom', lang };
+            if (m.match(/how old|age|years old|ilang taon|edad/)) return { type: 'age', lang };
+            if (m.match(/how many years|years of experience|how long have you|ilang taon.*karanasan|gaano katagal/)) return { type: 'experience', lang };
+            if (m.match(/worked with client|past client|previous client|have you worked|may kliyente|nagtrabaho na|nagkaroon.*kliyente/)) return { type: 'clients', lang };
+            if (m.match(/type of project|what project|kind of project|projects have you|anong proyekto|uri ng proyekto/)) return { type: 'projectTypes', lang };
+            if (m.match(/remote|work from home|online work|online ba|malayo|pwede.*online/)) return { type: 'remote', lang };
+            if (m.match(/student|studying|school|degree|college|university|nag-aaral|estudyante|paaralan/)) return { type: 'student', lang };
+            if (m.match(/logo/)) return { type: 'logo', lang };
+            if (m.match(/build.*web|create.*web|make.*web|develop.*web|can you build|gumawa.*web|website.*gawa|kaya.*gumawa/)) return { type: 'buildWebsite', lang };
+            if (m.match(/social media content|social media design|post|content creation|social media.*disenyo|gawa.*post/)) return { type: 'socialMedia', lang };
+            if (m.match(/video edit|editing|mag-edit|video editing|video ba/)) return { type: 'videoEditing', lang };
+            if (m.match(/both.*design|both.*develop|design and develop|full.*service|pareho.*design|design.*dev/)) return { type: 'bothDesignDev', lang };
+            if (m.match(/what service|what do you offer|what can you do|offer|provide|anong serbisyo|ano.*mayroon|ano.*offer|ano.*kaya/)) return { type: 'services', lang };
+            if (m.match(/how long|timeline|duration|how.*long.*take|when.*finish|gaano katagal|ilang araw|ilang linggo/)) return { type: 'timeline', lang };
+            if (m.match(/process|workflow|how do you work|steps|approach|paano.*proseso|paano ka nagtatrabaho/)) return { type: 'process', lang };
+            if (m.match(/deposit|downpayment|upfront|advance payment|may bayad|magkano.*deposit|kailangan.*advance/)) return { type: 'deposit', lang };
+            if (m.match(/start working|get started|begin|how do we start|work together|paano magsimula|saan magsimula|gusto.*magtrabaho/)) return { type: 'startWorking', lang };
+            if (m.match(/figma/)) return { type: 'figma', lang };
+            if (m.match(/existing.*web|current.*web|already have.*web|work with.*web|mayroon na.*web|may website na/)) return { type: 'existingWebsite', lang };
+            if (m.match(/what tool|software|tech stack|technology|use|anong.*tools|anong.*gamit|anong software/)) return { type: 'tools', lang };
+            if (m.match(/collaborat|partner|team up|work.*together|makipagtulungan|makipagsama/)) return { type: 'collaboration', lang };
+            if (m.match(/portfolio.*site|your.*website|do you have.*portfolio|portfolio mo|website mo/)) return { type: 'portfolioSite', lang };
+            if (m.match(/previous work|past work|example|sample|see your work|show.*work|halimbawa.*gawa|makita.*trabaho/)) return { type: 'previousWork', lang };
+            if (m.match(/skill|what can you|expertise|speciali|anong.*kasanayan|anong.*kaya|marunong ka/)) return { type: 'skills', lang };
+            if (m.match(/availab|hire|freelance|job|opport|full.?time|part.?time|available ka|pwede.*magtrabaho|naghahanap/)) return { type: 'available', lang };
+            if (m.match(/contact|reach|connect|touch|email|telegram|facebook|instagram|whatsapp|makipag-ugnayan|numero|makausap/)) return { type: 'contact', lang };
+            if (m.match(/rate|price|cost|charge|fee|how much|budget|pay|magkano|presyo|bayad|halaga/)) return { type: 'rate', lang };
+            return { type: 'fallback', lang };
+        }
+
+        function appendMessage(text, sender) {
+            const box = document.getElementById('chatMessages');
+            const isBot = sender === 'bot';
+            const wrapper = document.createElement('div');
+            wrapper.className = 'flex gap-2 items-start' + (isBot ? '' : ' justify-end');
+
+            if (isBot) {
+                wrapper.innerHTML = `
+                    <img src="PICTURES/profile1.png" class="w-6 h-6 object-cover flex-shrink-0 mt-1" alt="">
+                    <div class="bg-white border border-gray-200 px-3 py-2 text-sm text-gray-800 max-w-xs leading-relaxed shadow-sm whitespace-pre-line">${text}</div>`;
+            } else {
+                wrapper.innerHTML = `<div class="bg-black text-white px-3 py-2 text-sm max-w-xs leading-relaxed">${text}</div>`;
+            }
+
+            box.appendChild(wrapper);
+            box.scrollTop = box.scrollHeight;
+        }
+
+        function appendTelegramBtn() {
+            const box = document.getElementById('chatMessages');
+            const wrapper = document.createElement('div');
+            wrapper.className = 'flex gap-2 items-start';
+            wrapper.innerHTML = `
+                <img src="PICTURES/profile1.png" class="w-6 h-6 object-cover flex-shrink-0 mt-1" alt="">
+                <div class="flex flex-col gap-2">
+                    <p class="text-xs text-gray-500 mb-1">Choose how to reach me:</p>
+                    <a href="https://t.me/MikeRespicio" target="_blank"
+                        class="inline-flex items-center gap-2 px-3 py-2 bg-black text-white text-sm font-semibold hover:opacity-90 transition-opacity">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path></svg>
+                        Telegram
+                    </a>
+                    <a href="https://wa.me/639128181093" target="_blank"
+                        class="inline-flex items-center gap-2 px-3 py-2 bg-black text-white text-sm font-semibold hover:opacity-90 transition-opacity">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        WhatsApp
+                    </a>
+                </div>`;
+            box.appendChild(wrapper);
+            box.scrollTop = box.scrollHeight;
+        }
+
+        function botReply(type, lang) {
+            const responses = lang === 'tl' ? botResponsesTL : botResponses;
+            setTimeout(() => {
+                appendMessage(responses[type], 'bot');
+            }, 600);
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const text = input.value.trim();
+            if (!text) return;
+            appendMessage(text, 'user');
+            input.value = '';
+            const res = getResponse(text);
+            botReply(res.type, res.lang);
+        }
+
+        function sendQuick(text) {
+            appendMessage(text, 'user');
+            const res = getResponse(text);
+            botReply(res.type, res.lang);
+            document.getElementById('quickReplies').style.display = 'none';
+        }
+
+        function toggleChat() {
+            const panel = document.getElementById('chatPanel');
+            const isHidden = panel.classList.contains('hidden');
+            panel.classList.toggle('hidden');
+            panel.classList.toggle('flex');
+        }
     </script>
 </body>
 

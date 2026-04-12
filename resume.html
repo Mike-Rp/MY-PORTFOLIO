@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mikhail Liudor P. Respicio - Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 11pt;
+            color: #000;
+            background: #f0f0f0;
+        }
+
+        .page {
+            width: 8.5in;
+            min-height: 11in;
+            margin: 30px auto;
+            background: #fff;
+            padding: 0.4in 0.6in 0.4in 0.6in;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.13);
+            position: relative;
+        }
+
+        /* Print button */
+        .print-bar {
+            width: 8.5in;
+            margin: 0 auto 0 auto;
+            display: flex;
+            justify-content: flex-end;
+            padding: 14px 0 6px 0;
+        }
+        .print-btn {
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 8px 22px;
+            font-size: 13px;
+            cursor: pointer;
+            font-family: Arial, sans-serif;
+            letter-spacing: 0.03em;
+        }
+        .print-btn:hover { opacity: 0.8; }
+
+        /* Header */
+        .resume-name {
+            text-align: center;
+            font-size: 24pt;
+            font-weight: bold;
+            letter-spacing: 0.01em;
+            margin-bottom: 4px;
+        }
+
+        .resume-contact {
+            text-align: center;
+            font-size: 10pt;
+            color: #222;
+            margin-bottom: 6px;
+        }
+
+        .resume-contact span {
+            margin: 0 6px;
+            color: #555;
+        }
+
+        .resume-summary {
+            text-align: center;
+            font-size: 10pt;
+            color: #333;
+            margin-bottom: 8px;
+            line-height: 1.4;
+            font-style: italic;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: 11pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            border-bottom: 1.5px solid #000;
+            padding-bottom: 1px;
+            margin-bottom: 5px;
+        }
+
+        /* Experience / Education entries */
+        .entry {
+            margin-bottom: 7px;
+        }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .entry-org {
+            font-weight: bold;
+            font-size: 11pt;
+        }
+
+        .entry-location {
+            font-size: 10pt;
+            color: #333;
+            white-space: nowrap;
+            margin-left: 8px;
+        }
+
+        .entry-sub {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .entry-title {
+            font-style: italic;
+            font-size: 10.5pt;
+        }
+
+        .entry-date {
+            font-style: italic;
+            font-size: 10pt;
+            color: #333;
+            white-space: nowrap;
+            margin-left: 8px;
+        }
+
+        .entry-bullets {
+            margin-top: 3px;
+            padding-left: 18px;
+        }
+
+        .entry-bullets li {
+            font-size: 10.5pt;
+            line-height: 1.4;
+            margin-bottom: 1px;
+        }
+
+        /* Skills */
+        .skills-text {
+            font-size: 10pt;
+            line-height: 1.5;
+        }
+
+        .skills-text b {
+            font-weight: bold;
+        }
+
+        /* Certificates */
+        .cert-entry {
+            margin-bottom: 4px;
+        }
+
+        .cert-name {
+            font-weight: bold;
+            font-size: 10.5pt;
+        }
+
+        .cert-issuer {
+            font-style: italic;
+            font-size: 10pt;
+            color: #333;
+        }
+
+        /* Print styles */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        @media print {
+            body { background: #fff; }
+            .page {
+                margin: 0;
+                box-shadow: none;
+                padding: 0.65in 0.7in;
+                width: 100%;
+            }
+            .print-bar { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="print-bar" id="printBar">
+        <button class="print-btn" onclick="window.print()">&#8595; Download / Print</button>
+    </div>
+
+    <script>
+        // Hide print bar when inside the portfolio modal iframe
+        if (window.self !== window.top) {
+            document.getElementById('printBar').style.display = 'none';
+        }
+    </script>
+
+    <div class="page">
+
+        <!-- Header -->
+        <div class="resume-name">Mikhail Liudor P. Respicio</div>
+        <div class="resume-contact">
+            liudormikhail13@gmail.com
+            <span>|</span>
+            09128181093
+            <span>|</span>
+            Laguna, Philippines
+            <span>|</span>
+            rmike.site
+        </div>
+        <div class="resume-summary">
+            Passionate Graphic Designer, Web Developer, and UI Designer with over 5 years of experience creating impactful and user-focused digital solutions. Expertise in combining visual storytelling with modern design principles to deliver work that is both aesthetically pleasing and highly functional.
+        </div>
+
+        <!-- Experience -->
+        <div class="section">
+            <div class="section-title">Experience</div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-org">Freelance</span>
+                    <span class="entry-location">Remote</span>
+                </div>
+                <div class="entry-sub">
+                    <span class="entry-title">Sports Graphic Designer</span>
+                    <span class="entry-date">February 2025 – July 2025</span>
+                </div>
+                <ul class="entry-bullets">
+                    <li>Designed engaging sports visuals including match-day graphics, player highlights, and social media content.</li>
+                    <li>Collaborated with clients to create dynamic visuals that capture team identity and elevate fan engagement.</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-org">Computer Society</span>
+                    <span class="entry-location">Laguna, Philippines</span>
+                </div>
+                <div class="entry-sub">
+                    <span class="entry-title">Social Media Manager &amp; Graphic Designer</span>
+                    <span class="entry-date">2024 – Present</span>
+                </div>
+                <ul class="entry-bullets">
+                    <li>Created and managed social media content to boost engagement and promote events.</li>
+                    <li>Designed graphics aligned with the organization's branding and improved its online presence.</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-org">Casinodrop</span>
+                    <span class="entry-location">Remote</span>
+                </div>
+                <div class="entry-sub">
+                    <span class="entry-title">Graphic Designer &amp; Motion Designer</span>
+                    <span class="entry-date">August 2024 – December 2024</span>
+                </div>
+                <ul class="entry-bullets">
+                    <li>Produced visual and motion design content for digital platforms combining creative visuals with animation.</li>
+                    <li>Enhanced brand storytelling and audience engagement through cohesive motion design.</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-org">Freelance</span>
+                    <span class="entry-location">Remote</span>
+                </div>
+                <div class="entry-sub">
+                    <span class="entry-title">Stream Brand Designer</span>
+                    <span class="entry-date">June 2022 – October 2022</span>
+                </div>
+                <ul class="entry-bullets">
+                    <li>Designed custom stream overlays, logos, and visual assets for streamers to establish unique branding.</li>
+                    <li>Improved clients' on-screen presentation and audience appeal through consistent visual identity.</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-org">Freelance</span>
+                    <span class="entry-location">Remote</span>
+                </div>
+                <div class="entry-sub">
+                    <span class="entry-title">Graphic Designer &amp; Vlog Editor</span>
+                    <span class="entry-date">February 2021 – December 2021</span>
+                </div>
+                <ul class="entry-bullets">
+                    <li>Created visual content and edited vlogs to enhance storytelling and audience engagement.</li>
+                    <li>Delivered cohesive design and video presentation for client content channels.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Education -->
+        <div class="section">
+            <div class="section-title">Education</div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-org">STI College Sta. Rosa</span>
+                    <span class="entry-location">Laguna, Philippines</span>
+                </div>
+                <div class="entry-sub">
+                    <span class="entry-title">Bachelor of Science in Information Technology</span>
+                    <span class="entry-date">2023 – Present</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="section">
+            <div class="section-title">Skills &amp; Tools</div>
+            <div class="skills-text">
+                <b>Design:</b> Figma, Adobe Photoshop, Adobe Illustrator, Adobe After Effects, Adobe Premiere Pro, Capcut, Canva<br>
+                <b>Development:</b> HTML, CSS, JavaScript, Tailwind CSS, React, Next.js, SQL<br>
+                <b>Specializations:</b> UI/UX Design, Web Development, Motion Design, Social Media Design, Print Design
+            </div>
+        </div>
+
+        <!-- Certificates -->
+        <div class="section">
+            <div class="section-title">Certifications</div>
+
+            <div class="cert-entry">
+                <div class="cert-name">Adobe Premiere Pro Master Class</div>
+                <div class="cert-issuer">Graphics Media Training Philippines &mdash; January 2022</div>
+            </div>
+
+            <div class="cert-entry">
+                <div class="cert-name">Graphic Design Course Advanced</div>
+                <div class="cert-issuer">Phixels Creative Academy Philippines &mdash; May 2022</div>
+            </div>
+
+            <div class="cert-entry">
+                <div class="cert-name">Photoshop Class Course</div>
+                <div class="cert-issuer">Phixels Creative Academy Philippines &mdash; February 2022</div>
+            </div>
+
+            <div class="cert-entry">
+                <div class="cert-name">UI/UX Principles</div>
+                <div class="cert-issuer">CodeCred</div>
+            </div>
+
+            <div class="cert-entry">
+                <div class="cert-name">Cybersecurity Fundamentals</div>
+                <div class="cert-issuer">CodeCred</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

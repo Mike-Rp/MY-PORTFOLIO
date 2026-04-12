@@ -69,7 +69,7 @@
         .device-frame {
             position: relative;
             overflow: hidden;
-            border-radius: 0.5rem;
+
             background: #f9fafb;
             border: 2px solid #e5e7eb;
             transition: all 0.3s ease;
@@ -110,7 +110,7 @@
             align-items: center;
             padding: 0.5rem 1rem;
             background: #f3f4f6;
-            border-radius: 0.5rem;
+
             font-weight: 500;
             font-size: 0.875rem;
             color: #374151;
@@ -126,7 +126,7 @@
             align-items: center;
             gap: 0.5rem;
             padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
+
             font-weight: 600;
             transition: all 0.3s ease;
             border: 2px solid #e5e7eb;
@@ -170,7 +170,7 @@
     <div class="max-w-6xl mx-auto px-4 py-8">
         
         
-        <div class="bg-white rounded-lg border border-gray-200 p-6 mb-6 transition-colors duration-300">
+        <div class="bg-white border border-gray-200 p-6 mb-6 transition-colors duration-300">
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div>
                     <h1 class="text-3xl font-bold text-gray-900 mb-2">Graphic Task
@@ -179,27 +179,35 @@
                     
                     <p class="text-gray-600">Full-Stack Developer & UI/UX Designer</p>
                 </div>
-                <div class="flex gap-2">
-                    <a href="projects.html" class="back-link inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 rounded-lg hover:bg-gray-200 transition-colors">
+                <div class="flex flex-wrap gap-2">
+                    <a href="projects.html" class="back-link inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-900 hover:bg-gray-200 transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="m12 19-7-7 7-7"></path>
                             <path d="M19 12H5"></path>
                         </svg>
                         Back to Projects
                     </a>
-                    <a href="index.html" class="home-button inline-flex items-center justify-center gap-2 px-4 py-2 bg-black text-white font-semibold text-sm rounded-lg hover:opacity-90 transition-opacity">
+                    <a href="index.html" class="home-button inline-flex items-center justify-center gap-2 px-4 py-2 bg-black text-white font-semibold text-sm hover:opacity-90 transition-opacity">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                             <polyline points="9 22 9 12 15 12 15 22"></polyline>
                         </svg>
                         Home
                     </a>
+                    <a href="https://mike-rp.github.io/GRAPHIC-TASK/" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-black text-white font-semibold text-sm hover:opacity-90 transition-opacity">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" x2="21" y1="14" y2="3"></line>
+                        </svg>
+                        Check it out
+                    </a>
                 </div>
             </div>
         </div>
 
         
-        <div class="bg-white rounded-lg border border-gray-200 p-6 mb-6 transition-colors duration-300">
+        <div class="bg-white border border-gray-200 p-6 mb-6 transition-colors duration-300">
             <h2 class="text-2xl font-bold text-gray-900 mb-4">About This Project</h2>
             <div class="space-y-4 text-gray-700">
                 <p>
@@ -209,7 +217,7 @@
         </div>
 
        
-        <div class="bg-white rounded-lg border border-gray-200 p-6 mb-6 transition-colors duration-300">
+        <div class="bg-white border border-gray-200 p-6 mb-6 transition-colors duration-300">
             <h2 class="text-2xl font-bold text-gray-900 mb-4">Technologies Used</h2>
             <div class="flex flex-wrap gap-3">
                 <span class="tech-badge">HTML5</span>
@@ -220,7 +228,7 @@
         </div>
 
         
-        <div class="bg-white rounded-lg border border-gray-200 p-6 mb-6 transition-colors duration-300">
+        <div class="bg-white border border-gray-200 p-6 mb-6 transition-colors duration-300">
             <h2 class="text-2xl font-bold text-gray-900 mb-6">Responsive Design Showcase</h2>
             
             
@@ -254,23 +262,6 @@
                 <div id="deviceFrame" class="device-frame desktop-view">
                     <iframe src="https://mike-rp.github.io/GRAPHIC-TASK/" title="Website Preview"></iframe>
                 </div>
-            </div>
-        </div>
-
-        
-        <div class="bg-white rounded-lg border border-gray-200 p-6 transition-colors duration-300">
-            <div class="text-center">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">Experience the Live Website</h2>
-                <p class="text-gray-600 mb-6">Click below to open the full project in a new tab.</p>
-                <a href="https://mike-rp.github.io/GRAPHIC-TASK/" target="_blank" 
-                   class="inline-flex items-center gap-2 px-6 py-3 bg-black text-white font-bold text-lg rounded-lg hover:opacity-90 transition-opacity">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                        <polyline points="15 3 21 3 21 9"></polyline>
-                        <line x1="10" x2="21" y1="14" y2="3"></line>
-                    </svg>
-                    Check it out
-                </a>
             </div>
         </div>
 
